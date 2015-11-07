@@ -30,20 +30,33 @@ public class BXProgressHUD : UIView {
      *
      * @see MBProgressHUDMode
      */
-    public var mode: BXProgressHUDMode = .Indeterminate
+    public var mode: BXProgressHUDMode = .Indeterminate{
+        didSet{
+            shouldUpdateIndicators()
+        }
+    }
     
     /**
      * The animation type that should be used when the HUD is shown and hidden.
      *
      * @see MBProgressHUDAnimation
      */
-    public var animationType: BXProgressHUDAnimation  = .Fade
+    public var animationType: BXProgressHUDAnimation  = .Fade{
+        didSet{
+            shouldUpdateIndicators()
+        }
+    }
     
     /**
      * The UIView (e.g., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView.
      * For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds).
      */
-    public var customView: UIView?
+    public var customView: UIView?{
+        didSet{
+            shouldUpdateIndicators()
+        }
+        
+    }
     
     /**
      * The HUD delegate object.
@@ -52,18 +65,7 @@ public class BXProgressHUD : UIView {
      */
     weak public var delegate: BXProgressHUDDelegate?
     
-    /**
-     * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
-     * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
-     * set to @"", then no message is displayed.
-     */
-    public var labelText: String?
-    
-    /**
-     * An optional details message displayed below the labelText message. This message is displayed only if the labelText
-     * property is also set and is different from an empty string (@""). The details text can span multiple lines.
-     */
-    public var detailsLabelText: String?
+
     
     /**
      * The opacity of the HUD window. Defaults to 0.8 (80% opacity).
@@ -139,35 +141,89 @@ public class BXProgressHUD : UIView {
     public var removeFromSuperViewOnHide: Bool = false
     
     /**
+     * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
+     * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
+     * set to @"", then no message is displayed.
+     */
+    public var labelText: String?{
+        didSet{
+            label?.text = labelText
+            shouldUpdateUI()
+        }
+    }
+    
+    /**
+     * An optional details message displayed below the labelText message. This message is displayed only if the labelText
+     * property is also set and is different from an empty string (@""). The details text can span multiple lines.
+     */
+    public var detailsLabelText: String?{
+        didSet{
+            detailsLabel?.text = detailsLabelText
+            shouldUpdateUI()
+        }
+    }
+    
+    /**
      * Font to be used for the main label. Set this property if the default is not adequate.
      */
-    public var labelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize)
+    public var labelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize){
+        didSet{
+            label?.font = labelFont
+            shouldUpdateUI()
+        }
+    }
     
     /**
      * Color to be used for the main label. Set this property if the default is not adequate.
      */
-    public var labelColor: UIColor = .whiteColor()
+    public var labelColor: UIColor = .whiteColor(){
+        didSet{
+            label?.textColor = labelColor
+            shouldUpdateUI()
+        }
+    }
     
     /**
      * Font to be used for the details label. Set this property if the default is not adequate.
      */
-    public var detailsLabelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.detailsLabelFontSize)
+    public var detailsLabelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.detailsLabelFontSize){
+        didSet{
+            detailsLabel?.font = detailsLabelFont
+            shouldUpdateUI()
+        }
+    }
     
     /**
      * Color to be used for the details label. Set this property if the default is not adequate.
      */
-    public var detailsLabelColor = UIColor.whiteColor()
+    public var detailsLabelColor = UIColor.whiteColor(){
+        didSet{
+            detailsLabel?.textColor = detailsLabelColor
+            shouldUpdateUI()
+        }
+    }
     
     /**
      * The color of the activity indicator. Defaults to [UIColor whiteColor]
      * Does nothing on pre iOS 5.
      */
-    public var activityIndicatorColor: UIColor = .redColor()
+    public var activityIndicatorColor: UIColor = .whiteColor(){
+        didSet{
+            shouldUpdateIndicators()
+        }
+
+    }
     
     /**
      * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0.
      */
-    public var progress: CGFloat = 1.0
+    public var progress: CGFloat = 1.0{
+        didSet{
+            if let pg = indicator as? BXBaseProgressView{
+                pg.progress = progress
+            }
+        }
+    }
     
     /**
      * The minimum size of the HUD bezel. Defaults to CGSizeZero (no minimum size).
@@ -214,8 +270,8 @@ public class BXProgressHUD : UIView {
         alpha = 0.0
         setupLabels()
         updateIndicators()
-        installConstraints()
         registerForNotifications()
+        setNeedsUpdateConstraints()
     }
     
     
@@ -231,6 +287,7 @@ public class BXProgressHUD : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var _hasInstalledConstraints = false
     
     public override func drawRect(rect: CGRect) {
         super.drawRect(rect)
@@ -275,11 +332,32 @@ public class BXProgressHUD : UIView {
 
 }
 
+extension BXProgressHUD{
+    // MARK: KVO
+    func shouldUpdateIndicators(){
+        updateIndicators()
+        setNeedsLayout()
+        setNeedsDisplay()
+    }
+    
+    func shouldUpdateUI(){
+        setNeedsLayout()
+        setNeedsDisplay()
+    }
+    
+}
+
 extension UIView{
     // Code Taken from PinAutoLayout
     
     func pinCenterX(offset:CGFloat=0) -> NSLayoutConstraint{
         let c = NSLayoutConstraint(item: self, attribute: .CenterX, relatedBy: .Equal, toItem: superview!, attribute: .CenterX, multiplier: 1.0, constant: offset)
+        superview?.addConstraint(c)
+        return c
+    }
+    
+    func pinCenterY(offset:CGFloat=0) -> NSLayoutConstraint{
+        let c = NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: superview!, attribute: .CenterY, multiplier: 1.0, constant: offset)
         superview?.addConstraint(c)
         return c
     }
@@ -326,11 +404,13 @@ extension BXProgressHUD{
     }
     
     func updateIndicators(){
+        NSLog("\(__FUNCTION__)")
         let newIndicator:UIView?
         switch mode{
         case .Indeterminate:
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
             indicator.color = activityIndicatorColor
+            indicator.startAnimating()
             newIndicator = indicator
         case .DeterminateHorizontalBar:
            newIndicator = BXBarProgressView()
@@ -355,12 +435,29 @@ extension BXProgressHUD{
     
     
 
-    public override func intrinsicContentSize() -> CGSize {
-        return measure()
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        NSLog("\(__FUNCTION__)")
+    }
+    
+    public override func updateConstraints() {
+        NSLog("\(__FUNCTION__)")
+        installConstraints()
+        super.updateConstraints() // Call [super updateConstraints] as the final step in your implementation.
     }
     
     
+   
+
     func  installConstraints() {
+        if _hasInstalledConstraints{
+            return
+        }
+        _hasInstalledConstraints = true
+        
+        NSLog("\(__FUNCTION__)")
+        hudSize = measure()
+        let yPos = (bounds.height - hudSize.height) * 0.5 + margin + yOffset
         let allViews:[UIView?] = [ indicator,label,detailsLabel ]
         let padding = BXProgressOptions.padding
         var prevView:UIView?
@@ -371,7 +468,7 @@ extension BXProgressHUD{
                 if let prevView = prevView{
                     view.pinBelowSibling(prevView, margin: padding)
                 }else{
-                    view.pinTop(margin)
+                    view.pinTop(yPos)
                 }
                 prevView = view
             }
@@ -418,9 +515,7 @@ extension BXProgressHUD{
         measuredWidth += margin * 2
         measuredHeight += margin * 2
         
-        let size =  CGSize(width: measuredWidth, height: measuredHeight)
-        hudSize = size
-        return size
+        return  CGSize(width: measuredWidth, height: measuredHeight)
     }
     
     
@@ -575,6 +670,8 @@ extension BXProgressHUD{
                 return
             }
             
+        }else{
+            hideUsingAnimation(animated)
         }
     }
     

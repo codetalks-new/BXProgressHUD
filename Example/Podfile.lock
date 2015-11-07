@@ -1,14 +1,17 @@
 PODS:
   - BXProgressHUD (0.1.0)
+  - Reveal-iOS-SDK (1.6.1)
 
 DEPENDENCIES:
   - BXProgressHUD (from `../`)
+  - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
   BXProgressHUD:
     :path: ../
 
 SPEC CHECKSUMS:
-  BXProgressHUD: eaffce9de0bfe38cc39d5cdafcaad167a929974f
+  BXProgressHUD: ae8ad71280f435e28ac27c704f9b5097c2855b8f
+  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
 
 COCOAPODS: 0.39.0

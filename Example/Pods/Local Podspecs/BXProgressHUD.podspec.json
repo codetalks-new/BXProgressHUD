@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "summary": "A short description of BXProgressHUD.",
   "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/BXProgressHUD",
+  "homepage": "https://github.com/banxi1988/BXProgressHUD",
   "license": "MIT",
   "authors": {
     "banxi1988": "banxi1988@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/BXProgressHUD.git",
+    "git": "https://github.com/banxi1988/BXProgressHUD.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -21,5 +21,6 @@
     "BXProgressHUD": [
       "Pod/Assets/*.png"
     ]
-  }
+  },
+  "frameworks": "UIKit"
 }

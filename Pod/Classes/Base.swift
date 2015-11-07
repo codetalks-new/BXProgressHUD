@@ -27,6 +27,10 @@ public class BXBaseProgressView:UIView{
             setNeedsDisplay()
         }
     }
+    
+    public override func intrinsicContentSize() -> CGSize {
+        return frame.size
+    }
 }
 
 public struct BXProgressOptions{
