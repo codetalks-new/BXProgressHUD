@@ -1,0 +1,25 @@
+{
+  "name": "BXProgressHUD",
+  "version": "0.1.0",
+  "summary": "A short description of BXProgressHUD.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/BXProgressHUD",
+  "license": "MIT",
+  "authors": {
+    "banxi1988": "banxi1988@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/BXProgressHUD.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "BXProgressHUD": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

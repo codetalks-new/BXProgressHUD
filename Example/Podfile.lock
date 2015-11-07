@@ -1,0 +1,14 @@
+PODS:
+  - BXProgressHUD (0.1.0)
+
+DEPENDENCIES:
+  - BXProgressHUD (from `../`)
+
+EXTERNAL SOURCES:
+  BXProgressHUD:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BXProgressHUD: eaffce9de0bfe38cc39d5cdafcaad167a929974f
+
+COCOAPODS: 0.39.0
