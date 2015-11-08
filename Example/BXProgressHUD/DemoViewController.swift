@@ -14,6 +14,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     @IBOutlet var buttons: [UIButton]!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Demo List"
+        tableView.backgroundColor = UIColor(red: 0xe2 / 255.0, green: 0xe7 / 255.0, blue: 0xe8 / 255.0, alpha: 1.0)
         buttons.forEach{ button in button.layer.cornerRadius = 5.0 }
         
     }

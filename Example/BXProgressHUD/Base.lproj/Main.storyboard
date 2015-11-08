@@ -453,34 +453,6 @@
                                         <animations/>
                                         <color key="backgroundColor" red="0.8862745098" green="0.90588235289999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="2BV-sD-grJ">
-                                        <rect key="frame" x="0.0" y="764" width="600" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2BV-sD-grJ" id="gqB-OX-qC5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZe-RR-Pca">
-                                                    <rect key="frame" x="20" y="5" width="560" height="40"/>
-                                                    <animations/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="XWz-Kf-n7m"/>
-                                                    </constraints>
-                                                    <state key="normal" title="With Detail Label"/>
-                                                </button>
-                                            </subviews>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstItem="aZe-RR-Pca" firstAttribute="leading" secondItem="gqB-OX-qC5" secondAttribute="leadingMargin" constant="12" id="ANT-a3-an7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aZe-RR-Pca" secondAttribute="trailing" constant="12" id="FFi-ay-AjL"/>
-                                                <constraint firstItem="aZe-RR-Pca" firstAttribute="centerY" secondItem="gqB-OX-qC5" secondAttribute="centerY" id="X4V-7K-Edy"/>
-                                                <constraint firstItem="aZe-RR-Pca" firstAttribute="centerX" secondItem="gqB-OX-qC5" secondAttribute="centerX" id="ycw-UO-U1Y"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.90588235289999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -493,6 +465,18 @@
                     <connections>
                         <outletCollection property="buttons" destination="tik-AJ-7W0" collectionClass="NSMutableArray" id="IMd-lT-8nW"/>
                         <outletCollection property="buttons" destination="H5q-aH-Yca" collectionClass="NSMutableArray" id="loN-bw-Hkf"/>
+                        <outletCollection property="buttons" destination="gkj-Bw-qRd" collectionClass="NSMutableArray" id="4dh-iE-0xX"/>
+                        <outletCollection property="buttons" destination="arc-ch-WhZ" collectionClass="NSMutableArray" id="AQf-Q9-ffh"/>
+                        <outletCollection property="buttons" destination="lSk-X9-TE4" collectionClass="NSMutableArray" id="yov-Fr-xff"/>
+                        <outletCollection property="buttons" destination="4mE-ev-eTZ" collectionClass="NSMutableArray" id="tFz-nw-7IR"/>
+                        <outletCollection property="buttons" destination="q7g-p7-RyE" collectionClass="NSMutableArray" id="DtC-HG-Q46"/>
+                        <outletCollection property="buttons" destination="6Vb-oL-YIG" collectionClass="NSMutableArray" id="Wcj-ch-9qe"/>
+                        <outletCollection property="buttons" destination="buM-Ji-ncc" collectionClass="NSMutableArray" id="oes-6I-D3a"/>
+                        <outletCollection property="buttons" destination="Yn5-25-McN" collectionClass="NSMutableArray" id="jER-0w-FHm"/>
+                        <outletCollection property="buttons" destination="E3H-fF-H1P" collectionClass="NSMutableArray" id="xgM-no-XMW"/>
+                        <outletCollection property="buttons" destination="kPf-T6-1cL" collectionClass="NSMutableArray" id="BGH-tj-lgH"/>
+                        <outletCollection property="buttons" destination="v1n-Sp-CgS" collectionClass="NSMutableArray" id="fOw-C0-pFf"/>
+                        <outletCollection property="buttons" destination="IEA-wF-Efx" collectionClass="NSMutableArray" id="ChA-N8-dSW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xwa-AH-hDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
