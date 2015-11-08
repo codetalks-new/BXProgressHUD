@@ -288,6 +288,40 @@ public class BXProgressHUD : UIView {
     }
     
     private var _hasInstalledConstraints = false
+    private var _prevModeConstraints:[NSLayoutConstraint] = []
+    func  installConstraints() {
+        if _hasInstalledConstraints{
+            return
+        }
+        _hasInstalledConstraints = true
+        _prevModeConstraints.removeAll()
+        NSLog("\(__FUNCTION__)")
+        hudSize = measure()
+        let yPos = (bounds.height - hudSize.height) * 0.5 + margin + yOffset
+        let allViews:[UIView?] = [ indicator,label,detailsLabel ]
+        let padding = BXProgressOptions.padding
+        var prevView:UIView?
+        for view in allViews{
+            if let view  = view{
+                view.translatesAutoresizingMaskIntoConstraints = false
+                let cx = view.pinCenterX()
+                _prevModeConstraints.append(cx)
+                if let prevView = prevView{
+                   let cb = view.pinBelowSibling(prevView, margin: padding)
+                    _prevModeConstraints.append(cb)
+                    
+                }else{
+                    let ct = view.pinTop(yPos)
+                    _prevModeConstraints.append(ct)
+                }
+                prevView = view
+            }
+        }
+        
+    }
+    
+    
+    
     
     public override func drawRect(rect: CGRect) {
         super.drawRect(rect)
@@ -325,6 +359,7 @@ public class BXProgressHUD : UIView {
     }
     
     
+    
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -335,10 +370,12 @@ public class BXProgressHUD : UIView {
 extension BXProgressHUD{
     // MARK: KVO
     func shouldUpdateIndicators(){
+        removeConstraints(_prevModeConstraints)
+        _hasInstalledConstraints  = false
         updateIndicators()
-        setNeedsLayout()
-        setNeedsDisplay()
+        setNeedsUpdateConstraints()
     }
+    
     
     func shouldUpdateUI(){
         setNeedsLayout()
@@ -449,32 +486,7 @@ extension BXProgressHUD{
     
    
 
-    func  installConstraints() {
-        if _hasInstalledConstraints{
-            return
-        }
-        _hasInstalledConstraints = true
-        
-        NSLog("\(__FUNCTION__)")
-        hudSize = measure()
-        let yPos = (bounds.height - hudSize.height) * 0.5 + margin + yOffset
-        let allViews:[UIView?] = [ indicator,label,detailsLabel ]
-        let padding = BXProgressOptions.padding
-        var prevView:UIView?
-        for view in allViews{
-            if let view  = view{
-                view.translatesAutoresizingMaskIntoConstraints = false
-                view.pinCenterX()
-                if let prevView = prevView{
-                    view.pinBelowSibling(prevView, margin: padding)
-                }else{
-                    view.pinTop(yPos)
-                }
-                prevView = view
-            }
-        }
-        
-    }
+
     
     func measure() -> CGSize{
         if let p = superview{
