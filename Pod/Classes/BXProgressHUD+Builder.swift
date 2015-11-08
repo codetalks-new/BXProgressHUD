@@ -53,11 +53,52 @@ public extension BXProgressHUD{
             return self
         }
         
+        public func opacity(opacity:CGFloat) -> Self{
+            hud.opacity = opacity
+            return self
+        }
+        
         public func color(color:UIColor) -> Self{
             hud.color = color
             return self
         }
         
+        public func removeFromSuperViewOnHide(remove:Bool) -> Self{
+            hud.removeFromSuperViewOnHide = remove
+            return self
+        }
+        
+        
+        public func margin(margin:CGFloat) -> Self{
+            hud.margin = margin
+            return self
+        }
+        
+        public func cornerRadius(radius:CGFloat) -> Self{
+            hud.cornerRadius = radius
+            return self
+        }
+        
+        public func xOffset(offset:CGFloat) -> Self{
+            hud.xOffset = offset
+            return self
+        }
+        
+        
+        public func yOffset(offset:CGFloat) -> Self{
+            hud.yOffset = offset
+            return self
+        }
+        
+        public func graceTime(time:NSTimeInterval) -> Self{
+            hud.graceTime = time
+            return self
+        }
+        
+        public func minShowTime(time:NSTimeInterval) -> Self{
+            hud.minShowTime = time
+            return self
+        }
         
         public func show(animated:Bool = true) -> BXProgressHUD{
             create().show(animated)

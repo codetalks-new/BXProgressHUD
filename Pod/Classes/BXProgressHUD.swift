@@ -4,15 +4,15 @@
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
  *
  * This is a simple drop-in class for displaying a progress HUD view similar to Apple's private UIProgressHUD class.
- * The MBProgressHUD window spans over the entire space given to it by the initWithFrame constructor and catches all
+ * The BXProgressHUD window spans over the entire space given to it by the initWithFrame constructor and catches all
  * user input on this region, thereby preventing the user operations on components below the view. The HUD itself is
  * drawn centered as a rounded semi-transparent view which resizes depending on the user specified content.
  *
  * This view supports four modes of operation:
- * - MBProgressHUDModeIndeterminate - shows a UIActivityIndicatorView
- * - MBProgressHUDModeDeterminate - shows a custom round progress indicator
- * - MBProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator
- * - MBProgressHUDModeCustomView - shows an arbitrary, user specified view (@see customView)
+ * - BXProgressHUDModeIndeterminate - shows a UIActivityIndicatorView
+ * - BXProgressHUDModeDeterminate - shows a custom round progress indicator
+ * - BXProgressHUDModeAnnularDeterminate - shows a custom annular progress indicator
+ * - BXProgressHUDModeCustomView - shows an arbitrary, user specified view (@see customView)
  *
  * All three modes can have optional labels assigned:
  * - If the labelText property is set and non-empty then a label containing the provided content is placed below the
@@ -26,9 +26,9 @@ public class BXProgressHUD : UIView {
     public var completionBlock: BXProgressHUDCompletionBlock?
     
     /**
-     * MBProgressHUD operation mode. The default is MBProgressHUDModeIndeterminate.
+     * BXProgressHUD operation mode. The default is BXProgressHUDModeIndeterminate.
      *
-     * @see MBProgressHUDMode
+     * @see BXProgressHUDMode
      */
     public var mode: BXProgressHUDMode = .Indeterminate{
         didSet{
@@ -39,7 +39,7 @@ public class BXProgressHUD : UIView {
     /**
      * The animation type that should be used when the HUD is shown and hidden.
      *
-     * @see MBProgressHUDAnimation
+     * @see BXProgressHUDAnimation
      */
     public var animationType: BXProgressHUDAnimation  = .Fade{
         didSet{
@@ -48,7 +48,7 @@ public class BXProgressHUD : UIView {
     }
     
     /**
-     * The UIView (e.g., a UIImageView) to be shown when the HUD is in MBProgressHUDModeCustomView.
+     * The UIView (e.g., a UIImageView) to be shown when the HUD is in BXProgressHUDModeCustomView.
      * For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds).
      */
     public var customView: UIView?{
@@ -61,7 +61,7 @@ public class BXProgressHUD : UIView {
     /**
      * The HUD delegate object.
      *
-     * @see MBProgressHUDDelegate
+     * @see BXProgressHUDDelegate
      */
     weak public var delegate: BXProgressHUDDelegate?
     
@@ -233,7 +233,7 @@ public class BXProgressHUD : UIView {
     /**
      * The actual size of the HUD bezel.
      * You can use this to limit touch handling on the bezel aria only.
-     * @see https://github.com/jdg/MBProgressHUD/pull/200
+     * @see https://github.com/jdg/BXProgressHUD/pull/200
      */
     
      var hudSize = CGSizeZero
@@ -295,7 +295,9 @@ public class BXProgressHUD : UIView {
         }
         _hasInstalledConstraints = true
         _prevModeConstraints.removeAll()
+        #if DEBUG
         NSLog("\(__FUNCTION__)")
+        #endif
         hudSize = measure()
         let yPos = (bounds.height - hudSize.height) * 0.5 + margin + yOffset
         let allViews:[UIView?] = [ indicator,label,detailsLabel ]
@@ -304,7 +306,7 @@ public class BXProgressHUD : UIView {
         for view in allViews{
             if let view  = view{
                 view.translatesAutoresizingMaskIntoConstraints = false
-                let cx = view.pinCenterX()
+                let cx = view.pinCenterX(xOffset)
                 _prevModeConstraints.append(cx)
                 if let prevView = prevView{
                    let cb = view.pinBelowSibling(prevView, margin: padding)
@@ -351,7 +353,7 @@ public class BXProgressHUD : UIView {
         }
         
         // Draw rounded HUD background rect
-        let boxRect = CGRect(x: bounds.midX - size.width * 0.5, y: bounds.midY - size.height * 0.5, width: size.width, height: size.height)
+        let boxRect = CGRect(x: bounds.midX - size.width * 0.5 + xOffset, y: bounds.midY - size.height * 0.5 + yOffset, width: size.width, height: size.height)
         let roundPath = UIBezierPath(roundedRect: boxRect, cornerRadius: cornerRadius)
         roundPath.fill()
         
@@ -370,9 +372,13 @@ public class BXProgressHUD : UIView {
 extension BXProgressHUD{
     // MARK: KVO
     func shouldUpdateIndicators(){
+        updateIndicators()
+        shouldUpdateConstraints()
+    }
+    
+    func shouldUpdateConstraints(){
         removeConstraints(_prevModeConstraints)
         _hasInstalledConstraints  = false
-        updateIndicators()
         setNeedsUpdateConstraints()
     }
     
@@ -441,7 +447,10 @@ extension BXProgressHUD{
     }
     
     func updateIndicators(){
+        
+        #if DEBUG
         NSLog("\(__FUNCTION__)")
+        #endif
         let newIndicator:UIView?
         switch mode{
         case .Indeterminate:
@@ -474,11 +483,15 @@ extension BXProgressHUD{
 
     public override func layoutSubviews() {
         super.layoutSubviews()
+        #if DEBUG
         NSLog("\(__FUNCTION__)")
+        #endif
     }
     
     public override func updateConstraints() {
+        #if DEBUG
         NSLog("\(__FUNCTION__)")
+        #endif
         installConstraints()
         super.updateConstraints() // Call [super updateConstraints] as the final step in your implementation.
     }
