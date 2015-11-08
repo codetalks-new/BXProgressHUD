@@ -56,6 +56,8 @@ public enum BXProgressHUDMode : Int {
     case CustomView
     /** Shows only labels */
     case Text
+    /** Shows a Checkmark Image */
+    case Checkmark
 }
 
 public enum BXProgressHUDAnimation : Int {

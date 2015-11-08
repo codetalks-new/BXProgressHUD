@@ -458,6 +458,20 @@ extension BXProgressHUD{
             indicator.color = activityIndicatorColor
             indicator.startAnimating()
             newIndicator = indicator
+        case .Checkmark:
+            let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
+            
+            guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
+                NSLog("Resources bundle not found")
+                return
+            }
+            
+            guard let bundle = NSBundle(URL: bundleURL) else{
+                NSLog("Could not load Resources Bundle \(bundleURL)")
+                return
+            }
+            let imagePath = bundle.pathForResource("BX_37x-Checkmark@2x", ofType: "png")
+            newIndicator = UIImageView(image: UIImage(contentsOfFile: imagePath!))
         case .DeterminateHorizontalBar:
            newIndicator = BXBarProgressView()
         case .Determinate,.AnnularDeterminate:
@@ -470,6 +484,7 @@ extension BXProgressHUD{
             indicator?.removeFromSuperview()
             indicator = nil
             newIndicator = nil
+        
         }
         
         if let indicator = newIndicator {

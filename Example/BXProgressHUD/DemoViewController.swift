@@ -47,11 +47,17 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
     
+    @IBAction func showCheckmark(sender: AnyObject) {
+        BXProgressHUD.Builder(forView: targetView).mode(.Checkmark).text("A Builtin Checkmark").show().hide(afterDelay: 3)
+    }
+    
     
     @IBAction func showWithCustomView(sender: AnyObject) {
         let checkmarkView = UIImageView(image: UIImage(named: "37x-Checkmark"))
         BXProgressHUD.Builder(forView: targetView).mode(.CustomView).customView(checkmarkView).text("Completed").show().hide(afterDelay: 3)
     }
+    
+    
     @IBAction func showWithLabelMixed(sender: AnyObject) {
         HUD =  BXProgressHUD.Builder(forView: targetView).text("Connecting").create()
         HUD?.showAnimated(true, whileExecutingBlock: myMixedTask())
