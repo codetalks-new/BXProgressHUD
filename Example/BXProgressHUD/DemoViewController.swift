@@ -41,6 +41,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
     @IBAction func showWithLabelDeterminateHorizontalBar(sender: AnyObject) {
+        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.DeterminateHorizontalBar).text("Loading") .create()
+        HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
     
     
@@ -52,11 +54,72 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         HUD =  BXProgressHUD.Builder(forView: targetView).text("Connecting").create()
         HUD?.showAnimated(true, whileExecutingBlock: myMixedTask())
     }
-    @IBAction func showWithUsingBlocks(sender: AnyObject) { }
+    
+    @IBAction func showWithUsingBlocks(sender: AnyObject) {
+        let hud = BXProgressHUD.Builder(forView: targetView).text("With a Block").create()
+        hud.showAnimated(true, whileExecutingBlock:{
+             self.myTaskBlock()
+            },completionBlock:{
+               hud.removeFromSuperview()
+        })
+    }
+    
     @IBAction func showOnWindow(sender: AnyObject) {
         BXProgressHUD.Builder(forView: targetView.window!).text("Loading").show().hide(afterDelay: 3)
     }
-    @IBAction func showURL(sender: AnyObject) { }
+   
+    
+    @IBAction func showURL(sender: AnyObject) {
+        class SessionDelegate:NSObject,NSURLSessionDataDelegate {
+            let hud:BXProgressHUD
+            var expectedLength:Int64 = 0
+            var currentLength:Int64 = 0
+            init(hud:BXProgressHUD){
+                self.hud = hud
+            }
+            
+            @objc
+            func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+                runInUiThread{
+                    self.hud.mode = .Determinate
+                }
+                expectedLength = max(1,response.expectedContentLength)
+                currentLength = 0
+                completionHandler(.Allow)
+            }
+            
+            @objc
+            func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+                currentLength += data.length
+                let progress = (CGFloat(currentLength) / CGFloat(expectedLength))
+                runInUiThread{
+                    self.hud.progress  = progress
+                }
+            }
+            
+            @objc
+            func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+                runInUiThread{
+                    self.hud.customView = UIImageView(image: UIImage(named: "37x-Checkmark.png"))
+                    self.hud.mode = .CustomView
+                    self.hud.hide(afterDelay: 2)
+                }
+            }
+        }
+        
+        let URL = NSURL(string: "https://httpbin.org/gzip")!
+        let hud = BXProgressHUD.Builder(forView: targetView).text("Lading").detailText(URL.absoluteString) .show()
+        let delegate = SessionDelegate(hud: hud)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: delegate, delegateQueue: nil)
+        let loadTask = session.dataTaskWithURL(URL)
+        loadTask.resume()
+    }
+    
+
+    
+    
+
+    
     @IBAction func showWithGradient(sender: AnyObject) {
         BXProgressHUD.Builder(forView: targetView).dimBackground(true).show().hide(afterDelay: 3)
     }
@@ -137,3 +200,5 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
 func runInUiThread(block:dispatch_block_t){
     dispatch_async(dispatch_get_main_queue(), block)
 }
+
+
