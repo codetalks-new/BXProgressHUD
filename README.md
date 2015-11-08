@@ -21,7 +21,9 @@ pod "BXProgressHUD"
 ```
 
 ## Author
+Based on MBProgressHUD original  Created by Matej Bukovinski on 2.4.09.
 
+Swift Version Created by banxi1988
 banxi1988, banxi1988@gmail.com
 
 ## License
