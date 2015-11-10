@@ -299,7 +299,7 @@ public class BXProgressHUD : UIView {
         NSLog("\(__FUNCTION__)")
         #endif
         hudSize = measure()
-        let yPos = (bounds.height - hudSize.height) * 0.5 + margin + yOffset
+        let yPos = bounds.midY - size.height * 0.5 + yOffset + margin
         let allViews:[UIView?] = [ indicator,label,detailsLabel ]
         let padding = BXProgressOptions.padding
         var prevView:UIView?

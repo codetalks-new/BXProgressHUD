@@ -21,7 +21,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     var targetView: UIView{
-        return navigationController!.view
+        return self.view
     }
 
     @IBAction func showSimple(sender: AnyObject) {
