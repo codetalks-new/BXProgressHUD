@@ -18,6 +18,11 @@ public extension BXProgressHUD{
             targetView = forView
         }
         
+        public convenience init(){
+            let window = UIApplication.sharedApplication().keyWindow!
+            self.init(forView:window)
+        }
+        
         public func mode(mode:BXProgressHUDMode) -> Self{
             hud.mode = mode
             return self
