@@ -48,10 +48,21 @@ public extension BXProgressHUD{
             return self
         }
         
+        public func textColor(color:UIColor) -> Self{
+            hud.labelColor = color
+            return self
+        }
+        
         public func detailText(text:String) -> Self{
             hud.detailsLabelText = text
             return self
         }
+        
+        public func detailColor(color:UIColor) -> Self{
+            hud.detailsLabelColor = color
+            return self
+        }
+        
         
         public func customView(view:UIView) -> Self{
             hud.customView = view
