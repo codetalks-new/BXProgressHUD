@@ -747,7 +747,8 @@ extension BXProgressHUD{
             }
             UIView.commitAnimations()
         }else{
-            self.alpha = 1.0 // show inmediate
+           self.alpha = 1.0
+            self.hidden = false // show inmediate
         }
         
     }
@@ -779,6 +780,7 @@ extension BXProgressHUD{
         NSObject.cancelPreviousPerformRequestsWithTarget(self)
         isFinished = true
         hidden = true
+        setNeedsDisplay()
         if removeFromSuperViewOnHide{
             removeFromSuperview()
         }
