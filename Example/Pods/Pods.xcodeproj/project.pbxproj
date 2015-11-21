@@ -15,6 +15,7 @@
 		3A3807D4CCD1B567321F5512177EDBEE /* Pods-BXProgressHUD_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2CC7F4BCAB3FF225A78D0C73B8B8C /* Pods-BXProgressHUD_Example-dummy.m */; };
 		3E0134961BEF308E00D9DDD6 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3E0134951BEF308E00D9DDD6 /* .gitkeep */; };
 		3E01349D1BEF338700D9DDD6 /* BX_37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E01349B1BEF335800D9DDD6 /* BX_37x-Checkmark@2x.png */; };
+		3E0466941C00062400CF8F46 /* BXHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0466931C00062400CF8F46 /* BXHUD.swift */; };
 		47058617574413AE567BCA3740CA9ADE /* BXProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AC38041F0E2E07F2B0F56AFDA3474CE /* BXProgressHUD.bundle */; };
 		49DE31A6D39B038DC45A999328D4AB3B /* Pods-BXProgressHUD_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A520ED586F8D74E157597B6BB1341399 /* Pods-BXProgressHUD_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F60CA93C0E7719388385362BB8C7E9D /* BXProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BB964B6C36413696DEA9D94273B94A /* BXProgressHUD-dummy.m */; };
@@ -61,6 +62,7 @@
 		2C948FAE88599501E425A1FB962A8A4B /* Pods-BXProgressHUD_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXProgressHUD_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3E0134951BEF308E00D9DDD6 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		3E01349B1BEF335800D9DDD6 /* BX_37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BX_37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		3E0466931C00062400CF8F46 /* BXHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXHUD.swift; sourceTree = "<group>"; };
 		4839C2164AF553FE0C799396E0C5343F /* Pods-BXProgressHUD_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Example-resources.sh"; sourceTree = "<group>"; };
 		4DB2CC7F4BCAB3FF225A78D0C73B8B8C /* Pods-BXProgressHUD_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BXProgressHUD_Example-dummy.m"; sourceTree = "<group>"; };
 		63E4B48ED5B3F7B7112D90AC3300A00F /* Pods-BXProgressHUD_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BXProgressHUD_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				CC1A97C814855456A5AA87E02D60A1AD /* BXProgressHUD.swift */,
 				081C742A873BE69FDD741FC230C8D6C7 /* BXProgressHUD+Builder.swift */,
 				68FBC21385BAD459BE2AC198C45B5D12 /* BXRoundProgressView.swift */,
+				3E0466931C00062400CF8F46 /* BXHUD.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				9035EBCCE7271CA6213DAE514CD83BF4 /* Base.swift in Sources */,
 				C3D397F26A6F87FAF7E1A573894605C2 /* BXBarProgressView.swift in Sources */,
 				2FF59356F69F5747A1A6A82FCBD5755B /* BXProgressHUD+Builder.swift in Sources */,
+				3E0466941C00062400CF8F46 /* BXHUD.swift in Sources */,
 				4F60CA93C0E7719388385362BB8C7E9D /* BXProgressHUD-dummy.m in Sources */,
 				D78E8D9C9AB0C68AB28FE2B03230344C /* BXProgressHUD.swift in Sources */,
 				BDFC02360D32FF791F9A4DF66A282BA5 /* BXRoundProgressView.swift in Sources */,
