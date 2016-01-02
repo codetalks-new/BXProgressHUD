@@ -91,9 +91,9 @@ public class BXProgressHUD : UIView {
     
     /**
      * The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views).
-     * Defaults to 20.0
+     * Defaults to 24.0
      */
-    public var margin: CGFloat = 20.0
+    public var margin: CGFloat = 24.0
     
     /**
      * The corner radius for the HUD
