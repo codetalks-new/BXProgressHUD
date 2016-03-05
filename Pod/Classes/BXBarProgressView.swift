@@ -51,6 +51,10 @@ public class BXBarProgressView: BXBaseProgressView{
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+  
+  public override func intrinsicContentSize() -> CGSize {
+    return BXProgressOptions.barSize
+  }
     
     
     public override func drawRect(rect: CGRect) {

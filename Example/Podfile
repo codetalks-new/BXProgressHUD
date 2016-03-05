@@ -2,16 +2,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
 use_frameworks!
 
-def pod_common
-    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-end
 
-target 'BXProgressHUD_Example', :exclusive => true do
+target 'BXProgressHUD_Example' do
   pod "BXProgressHUD", :path => "../"
-  pod_common
+  pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end
 
-target 'BXProgressHUD_Tests', :exclusive => true do
+target 'BXProgressHUD_Tests' do
   pod "BXProgressHUD", :path => "../"
 
   

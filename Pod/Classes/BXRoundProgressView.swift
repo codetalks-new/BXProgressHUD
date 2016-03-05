@@ -44,7 +44,13 @@ public class BXRoundProgressView : BXBaseProgressView{
         backgroundColor = .clearColor()
         opaque = false
     }
-    
+  
+    public override func intrinsicContentSize() -> CGSize {
+      let size =  BXProgressOptions.annularSize
+      return CGSize(width: size, height: size)
+    }
+  
+  
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

@@ -1,0 +1,6 @@
+framework module PinAuto {
+  umbrella header "PinAuto-umbrella.h"
+
+  export *
+  module * { export * }
+}

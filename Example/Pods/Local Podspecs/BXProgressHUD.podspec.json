@@ -1,8 +1,8 @@
 {
   "name": "BXProgressHUD",
-  "version": "0.1.0",
-  "summary": "A short description of BXProgressHUD.",
-  "description": "",
+  "version": "1.0.3",
+  "summary": "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 2.1 with some new feature",
+  "description": "BXProgressHUD A ProgressHUD based on MBProgressHUD,\nAs this is rewritten with Swift 2.1,It should be used more naturely in Swift Code,\nAnd It's add some Builder Pattern Support.",
   "homepage": "https://github.com/banxi1988/BXProgressHUD",
   "license": "MIT",
   "authors": {
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/banxi1988/BXProgressHUD.git",
-    "tag": "0.1.0"
+    "tag": "1.0.3"
   },
   "platforms": {
     "ios": "8.0"
@@ -22,5 +22,10 @@
       "Pod/Assets/*.png"
     ]
   },
-  "frameworks": "UIKit"
+  "frameworks": "UIKit",
+  "dependencies": {
+    "PinAuto": [
+
+    ]
+  }
 }

@@ -48,7 +48,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     @IBAction func showCheckmark(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).mode(.Checkmark).text("A Builtin Checkmark").show().hide(afterDelay: 3)
+        BXProgressHUD.Builder(forView: targetView).mode(.Checkmark).text("A Builtin Checkmark").show()
     }
     
     
@@ -73,7 +73,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     @IBAction func showOnWindow(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView.window!).text("Loading").show().hide(afterDelay: 3)
+        BXProgressHUD.Builder(forView: targetView.window!).text("Loading").show()
     }
    
     

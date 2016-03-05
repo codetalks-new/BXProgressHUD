@@ -33,32 +33,9 @@ public class BXBaseProgressView:UIView{
     }
 }
 
-public struct BXProgressOptions{
-    public static var annularSize :CGFloat = 37
-    public static var lineWidth : CGFloat = 2.0
-    public static var barSize : CGSize = CGSize(width: 120, height: 20)
-    public static let labelFontSize  : CGFloat = 14.0
-    public static let padding  : CGFloat = 4.0
-    public static let detailsLabelFontSize  :CGFloat = 12.0
-}
 
-public enum BXProgressHUDMode : Int {
-    
-    /** Progress is shown using an UIActivityIndicatorView. This is the default. */
-    case Indeterminate
-    /** Progress is shown using a round, pie-chart like, progress view. */
-    case Determinate
-    /** Progress is shown using a horizontal progress bar */
-    case DeterminateHorizontalBar
-    /** Progress is shown using a ring-shaped progress view. */
-    case AnnularDeterminate
-    /** Shows a custom view */
-    case CustomView
-    /** Shows only labels */
-    case Text
-    /** Shows a Checkmark Image */
-    case Checkmark
-}
+
+
 
 public enum BXProgressHUDAnimation : Int {
     

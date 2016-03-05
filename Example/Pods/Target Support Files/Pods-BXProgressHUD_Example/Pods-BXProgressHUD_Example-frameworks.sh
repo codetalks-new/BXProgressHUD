@@ -84,8 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-BXProgressHUD_Example/BXProgressHUD.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXProgressHUD/BXProgressHUD.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PinAuto/PinAuto.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-BXProgressHUD_Example/BXProgressHUD.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/BXProgressHUD/BXProgressHUD.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/PinAuto/PinAuto.framework"
 fi
