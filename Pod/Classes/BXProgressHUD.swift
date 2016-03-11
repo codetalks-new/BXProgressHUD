@@ -164,80 +164,17 @@ public class BXProgressHUD : UIView {
    */
   public var removeFromSuperViewOnHide: Bool = false
   
-  var contentView:UIView = UIView(frame: CGRectZero)
+  let contentView:UIView = UIView(frame: CGRectZero)
   
-  lazy var label :UILabel = {
-    let label = UILabel(frame: CGRectZero)
-    return label
-  }()
+  public let label :UILabel =  UILabel(frame: CGRectZero)
   
-  lazy var detailsLabel :UILabel = {
-    let label = UILabel(frame: CGRectZero)
-    return label
-  }()
+  public let detailsLabel :UILabel =  UILabel(frame: CGRectZero)
   
-  /**
-   * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
-   * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
-   * set to @"", then no message is displayed.
-   */
-  public var labelText: String?{
-    didSet{
-      label.text = labelText
-      shouldUpdateUI()
-    }
-  }
   
-  /**
-   * An optional details message displayed below the labelText message. This message is displayed only if the labelText
-   * property is also set and is different from an empty string (@""). The details text can span multiple lines.
-   */
-  public var detailsLabelText: String?{
-    didSet{
-      detailsLabel.text = detailsLabelText
-      shouldUpdateUI()
-    }
-  }
   
-  /**
-   * Font to be used for the main label. Set this property if the default is not adequate.
-   */
-  public var labelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize){
-    didSet{
-      label.font = labelFont
-      shouldUpdateUI()
-    }
-  }
   
-  /**
-   * Color to be used for the main label. Set this property if the default is not adequate.
-   */
-  public var labelColor: UIColor = .whiteColor(){
-    didSet{
-      label.textColor = labelColor
-      shouldUpdateUI()
-    }
-  }
   
-  /**
-   * Font to be used for the details label. Set this property if the default is not adequate.
-   */
-  public var detailsLabelFont = UIFont.boldSystemFontOfSize(BXProgressOptions.detailsLabelFontSize){
-    didSet{
-      detailsLabel.font = detailsLabelFont
-      shouldUpdateUI()
-    }
-  }
-  
-  /**
-   * Color to be used for the details label. Set this property if the default is not adequate.
-   */
-  public var detailsLabelColor = UIColor.whiteColor(){
-    didSet{
-      detailsLabel.textColor = detailsLabelColor
-      shouldUpdateUI()
-    }
-  }
+ 
   
   /**
    * The color of the activity indicator. Defaults to [UIColor whiteColor]
@@ -451,14 +388,12 @@ public class BXProgressHUD : UIView {
     updateBackgroundColor()
     contentView.layer.cornerRadius = cornerRadius
     
-    label.textColor = self.labelColor
-    label.font = self.labelFont
-    label.text = self.labelText
+    label.textColor = .whiteColor()
+    label.font = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize)
     
-    detailsLabel.textColor = detailsLabelColor
+    detailsLabel.textColor = .whiteColor()
     detailsLabel.numberOfLines = 1
-    detailsLabel.font = detailsLabelFont
-    detailsLabel.text = detailsLabelText
+    detailsLabel.font = UIFont.boldSystemFontOfSize(BXProgressOptions.detailsLabelFontSize)
     
     
     for l in [label,detailsLabel]{

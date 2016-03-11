@@ -28,8 +28,8 @@ public struct BXHUD{
       return hud
     }
     window.bringSubviewToFront(hud)
-    hud.labelText = label
-    hud.labelColor = .whiteColor()
+    hud.label.text = label
+    hud.label.textColor = .whiteColor()
     hud.graceTime = 0
     hud.removeFromSuperViewOnHide = false
     hud.mode = .Indeterminate
@@ -58,7 +58,7 @@ public struct BXHUD{
     }
     let hud = globalHUD()
     window.bringSubviewToFront(hud)
-    hud.labelText = text
+    hud.label.text = text
     hud.mode = .Checkmark
     hud.hide(afterDelay: 0.5)
   }
@@ -70,7 +70,7 @@ public struct BXHUD{
     let hud = globalHUD()
     window.bringSubviewToFront(hud)
     if !label.isEmpty{
-      hud.labelText = label
+      hud.label.text = label
       hud.hide(afterDelay: 1.5)
     }else{
       hud.hide()
@@ -83,7 +83,7 @@ public struct BXHUD{
     }
     let hud = globalHUD()
     window.bringSubviewToFront(hud)
-    hud.labelText = label
+    hud.label.text = label
     hud.mode = .Text
     hud.graceTime = 0
     hud.show()
@@ -98,9 +98,9 @@ public struct BXHUD{
     window.bringSubviewToFront(hud)
     hud.mode = .Text
     hud.graceTime = 0
-    hud.labelColor = errorColor
-    hud.labelText = label
-    hud.detailsLabelText = detail
+    hud.label.textColor = errorColor
+    hud.label.text = label
+    hud.detailsLabel.text = detail
     hud.show()
     hud.hide(afterDelay: 1.0)
   }

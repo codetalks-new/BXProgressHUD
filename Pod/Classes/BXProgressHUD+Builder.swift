@@ -44,22 +44,22 @@ public extension BXProgressHUD{
         
         
         public func text(text:String) -> Self{
-            hud.labelText = text
+            hud.label.text = text
             return self
         }
         
         public func textColor(color:UIColor) -> Self{
-            hud.labelColor = color
+            hud.label.textColor = color
             return self
         }
         
         public func detailText(text:String) -> Self{
-            hud.detailsLabelText = text
+            hud.detailsLabel.text = text
             return self
         }
         
         public func detailColor(color:UIColor) -> Self{
-            hud.detailsLabelColor = color
+            hud.detailsLabel.textColor = color
             return self
         }
         
