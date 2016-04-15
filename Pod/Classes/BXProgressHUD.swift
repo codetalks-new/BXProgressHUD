@@ -169,7 +169,8 @@ public class BXProgressHUD : UIView {
   public let label :UILabel =  UILabel(frame: CGRectZero)
   
   public let detailsLabel :UILabel =  UILabel(frame: CGRectZero)
-  
+ 
+  public var checkmarkImage:UIImage?
   
   
   
@@ -284,19 +285,11 @@ public class BXProgressHUD : UIView {
       indicator.startAnimating()
       newIndicator = indicator
     case .Checkmark:
-      let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
-      
-      guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
-        NSLog("Resources bundle not found")
-        return
+      if let image = checkmarkImage{
+        newIndicator = UIImageView(image: image)
+      }else{
+        newIndicator = nil
       }
-      
-      guard let bundle = NSBundle(URL: bundleURL) else{
-        NSLog("Could not load Resources Bundle \(bundleURL)")
-        return
-      }
-      let imagePath = bundle.pathForResource("BX_37x-Checkmark@2x", ofType: "png")
-      newIndicator = UIImageView(image: UIImage(contentsOfFile: imagePath!))
     case .DeterminateHorizontalBar:
       newIndicator = BXBarProgressView()
     case .Determinate,.AnnularDeterminate:
@@ -318,6 +311,25 @@ public class BXProgressHUD : UIView {
       indicator.translatesAutoresizingMaskIntoConstraints = false
       contentView.addSubview(indicator)
     }
+  }
+  
+  func imageByName(name:String) -> UIImage?{
+    let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
+    guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
+      NSLog("Resources bundle not found")
+      return nil
+    }
+    
+    guard let bundle = NSBundle(URL: bundleURL) else{
+      NSLog("Could not load Resources Bundle \(bundleURL)")
+      return nil
+    }
+    if let imagePath = bundle.pathForResource(name, ofType: "png"){
+      return UIImage(contentsOfFile: imagePath)
+    }else{
+      return nil
+    }
+    
   }
   
   func reAutoLayout(){

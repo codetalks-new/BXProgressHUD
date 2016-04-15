@@ -174,7 +174,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             sleep(2)
             runInUiThread{
                 hud.mode = .Determinate
-                hud.labelText = "Progress"
+                hud.label.text = "Progress"
             }
             var progress = 0.0
             while progress < 1.0 {
@@ -188,7 +188,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             // Back to indeterminate mode
             runInUiThread{
                 hud.mode = .Indeterminate
-                hud.labelText = "Cleaning up"
+                hud.label.text = "Cleaning up"
             }
             sleep(2)
             
@@ -197,7 +197,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
                 let checkmarkView = UIImageView(image: UIImage(named: "37x-Checkmark"))
                 hud.customView = checkmarkView
                 hud.mode = .CustomView
-                hud.labelText = "Completed"
+                hud.label.text = "Completed"
             }
             sleep(2)
         }

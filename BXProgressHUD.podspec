@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXProgressHUD"
-  s.version          = "1.2.0"
+  s.version          = "1.3.0"
   s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 2.1 with some new feature"
 
 # This description is used to generate tags and improve search results.
@@ -33,10 +33,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'BXProgressHUD' => ['Pod/Assets/*.png']
-  }
-
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit' #, 'MapKit'
   s.dependency 'PinAuto'
