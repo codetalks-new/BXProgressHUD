@@ -275,7 +275,7 @@ public class BXProgressHUD : UIView {
   func updateIndicators(){
     
     #if DEBUG
-      NSLog("\(__FUNCTION__)")
+      NSLog("\(#function)")
     #endif
     let newIndicator:UIView?
     switch mode{
@@ -420,13 +420,13 @@ public class BXProgressHUD : UIView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     #if DEBUG
-      NSLog("\(__FUNCTION__)")
+      NSLog("\(#function)")
     #endif
   }
   
   public override func updateConstraints() {
     #if DEBUG
-      NSLog("\(__FUNCTION__)")
+      NSLog("\(#function)")
     #endif
     installConstraints()
     super.updateConstraints() // Call [super updateConstraints] as the final step in your implementation.
@@ -435,7 +435,7 @@ public class BXProgressHUD : UIView {
   public override func willMoveToSuperview(newSuperview: UIView?) {
     super.willMoveToSuperview(newSuperview)
     #if DEBUG
-      NSLog("\(__FUNCTION__)")
+      NSLog("\(#function)")
     #endif
     if let superView  = newSuperview{
       frame = superView.bounds
