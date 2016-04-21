@@ -341,6 +341,7 @@ public class BXProgressHUD : UIView {
   
   
   func  installConstraints() {
+    updateLabels()
     guard let indicator = self.indicator else{
       installConstraintsForTextMode()
       return
