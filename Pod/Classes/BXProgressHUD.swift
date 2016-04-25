@@ -350,12 +350,17 @@ public class BXProgressHUD : UIView {
   }
   
   func installConstraintsForTextMode(){
-    for labelView in [label,detailsLabel]{
-      labelView.pac_horizontal(15)
+    if mode.isOnlyText{
+      for labelView in [label,detailsLabel]{
+        labelView.pac_horizontal(15)
+      }
+      label.pa_top.eq(15).install()
+      detailsLabel.pa_below(label, offset: 4).install()
+      detailsLabel.pa_bottom.eq(15).install()
+    }else{
+      label.pac_horizontal(15)
+      label.pac_vertical(15)
     }
-    label.pa_top.eq(15).install()
-    detailsLabel.pa_below(label, offset: 4).install()
-    detailsLabel.pa_bottom.eq(15).install()
     
   }
   
