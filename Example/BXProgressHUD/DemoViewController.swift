@@ -21,7 +21,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     var targetView: UIView{
-        return self.view
+        return self.view.superview!
     }
 
     @IBAction func showSimple(sender: AnyObject) {
@@ -32,7 +32,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     @IBAction func showWithDetailLabel(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).text("Loading").detailText("Updating data").show().hide(afterDelay: 3)
+        BXProgressHUD.Builder(forView: targetView).text("Loading").detailText("Updating data").show()//.hide(afterDelay: 3)
     }
     @IBAction func showWithLabelDeterminate(sender: AnyObject) {
         HUD =  BXProgressHUD.Builder(forView: targetView).mode(.Determinate).text("Loading") .create()
@@ -53,8 +53,9 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     
     
     @IBAction func showWithCustomView(sender: AnyObject) {
-        let checkmarkView = UIImageView(image: UIImage(named: "37x-Checkmark"))
-        BXProgressHUD.Builder(forView: targetView).mode(.CustomView).customView(checkmarkView).text("Completed").show().hide(afterDelay: 3)
+        let checkmarkView = UIImageView(image: UIImage(named: "checkmark"))
+        let hud = BXProgressHUD.Builder(forView: targetView).mode(.CustomView).customView(checkmarkView).text("Completed")
+          hud.show() //.hide(afterDelay: 3)
     }
     
     
@@ -108,7 +109,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             @objc
             func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
                 runInUiThread{
-                    self.hud.customView = UIImageView(image: UIImage(named: "37x-Checkmark.png"))
+                    self.hud.customView = UIImageView(image: UIImage(named: "checkmark"))
                     self.hud.mode = .CustomView
                     self.hud.hide(afterDelay: 2)
                 }
@@ -135,8 +136,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         BXProgressHUD.Builder(forView: targetView).mode(.Text).text("Some message...").show().hide(afterDelay: 3)
     }
     @IBAction func showWithColor(sender: AnyObject) {
-        let color = UIColor(red: 0.23, green: 0.50, blue: 0.82, alpha: 0.90)
-        BXProgressHUD.Builder(forView: targetView).color(color).show().hide(afterDelay: 3)
+//        let color = UIColor(red: 0.23, green: 0.50, blue: 0.82, alpha: 0.90)
+//        BXProgressHUD.Builder(forView: targetView).color(color).show().hide(afterDelay: 3)
     }
     
     func hudWasHidden(hud: BXProgressHUD) {
@@ -194,7 +195,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             
             // UIImageView
             runInUiThread{
-                let checkmarkView = UIImageView(image: UIImage(named: "37x-Checkmark"))
+                let checkmarkView = UIImageView(image: UIImage(named: "checkmark"))
                 hud.customView = checkmarkView
                 hud.mode = .CustomView
                 hud.label.text = "Completed"

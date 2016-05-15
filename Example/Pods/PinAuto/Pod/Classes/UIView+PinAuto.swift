@@ -18,7 +18,9 @@ public class LayoutConstraintParams{
   public var constant:CGFloat  = 0
   public let firstItem:UIView
   public var secondItem:AnyObject?
+  public var identifier:String? = LayoutConstraintParams.constraintIdentifier
  
+  public static let constraintIdentifier = "pin_auto"
   private let attributesOfOpposite: [NSLayoutAttribute] = [.Right,.RightMargin,.Trailing,.TrailingMargin,.Bottom,.BottomMargin]
   
   private var shouldReverseValue:Bool{
@@ -200,10 +202,28 @@ public class LayoutConstraintParams{
     secondItemAttribute = firstItemAttribute
     return self
   }
+ 
+  @warn_unused_result
+  public func identifier(id:String?) -> LayoutConstraintParams{
+    self.identifier = id
+    return self
+  }
   
-  
+ 
+  @warn_unused_result
+  public func equalTo(itemAttribute:NSLayoutAttribute,ofView view:UIView) -> LayoutConstraintParams{
+    self.secondItem = view
+    self.relation = .Equal
+    self.secondItemAttribute = itemAttribute
+    return self
+  }
   
   public var inSuperview: LayoutConstraintParams{
+    secondItem = firstItem.superview
+    return self
+  }
+  
+  public var toSuperview: LayoutConstraintParams{
     secondItem = firstItem.superview
     return self
   }
@@ -221,6 +241,7 @@ public class LayoutConstraintParams{
       attribute: secondItemAttribute,
       multiplier: multiplier,
       constant: finalConstanValue)
+    constraint.identifier = identifier
     firstItem.translatesAutoresizingMaskIntoConstraints = false
     
     if let secondItem = secondItem{

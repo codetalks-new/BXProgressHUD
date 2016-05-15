@@ -7,32 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042E88952AA4F5E442E7D8DF002EAD18 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60A507E5403491AC100EA7CF8D60BAB /* UIKit.framework */; };
-		1F72FFB5EB8E479B7B9D56B2E2B68B93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02468E810B7636F32BDADF630F787E35 /* Foundation.framework */; };
-		2A94941D1B3B7F836A6073391EE1DC04 /* PinAuto-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF30B62899578DCA73C457CFF182AE84 /* PinAuto-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E87AE00A95AD86238E0105DC0D6FDA3 /* UIView+PinAuto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A093A4A597507E0D2F8F6EC75DB0C /* UIView+PinAuto.swift */; };
+		2A94941D1B3B7F836A6073391EE1DC04 /* PinAuto-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0911BD2715A02E77E74557F49B6949C5 /* PinAuto-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E87AE00A95AD86238E0105DC0D6FDA3 /* UIView+PinAuto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86E9C232005D1DF26A447BDC778EED0 /* UIView+PinAuto.swift */; };
 		2FE2A2FC5D66ADCB47937A2BCCD889D2 /* Pods-BXProgressHUD_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2CC7F4BCAB3FF225A78D0C73B8B8C /* Pods-BXProgressHUD_Example-dummy.m */; };
-		38F38077E795F0E98E6FC591636A99B3 /* UIView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730AC162C9EB0D8969724346924AF0C /* UIView+Convenience.swift */; };
-		66FF82C23B7B7289AB010BBE5CDF79A5 /* PinAuto-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0932608B7D58942F4B50296A08EC61 /* PinAuto-dummy.m */; };
+		38F38077E795F0E98E6FC591636A99B3 /* UIView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F956432C21351927CB76EFC376CEE4 /* UIView+Convenience.swift */; };
+		3D3265C278DF166FB326A488B2FFA422 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40ACBBFA20F77607C153A4CDC561C1C2 /* UIKit.framework */; };
+		4E6A034561F3E0C85CE3E590F79E5130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */; };
+		66FF82C23B7B7289AB010BBE5CDF79A5 /* PinAuto-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B88EC7B35A3AA8EEE8C04262266336B /* PinAuto-dummy.m */; };
 		7BF9F85D231299E1E702E46DE7E6C367 /* BXProgressHUDMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE59DBD77C79C72FD1848FA2A78FCA /* BXProgressHUDMode.swift */; };
-		7BFC8E148B2BB648334E5B316BD4EECB /* PinAuto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42065C565B7639961888F4E66BF4CC69 /* PinAuto.bundle */; };
-		86525E9B6881F75947F4FECE6A784320 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02468E810B7636F32BDADF630F787E35 /* Foundation.framework */; };
 		95B61448E587ECE324E9340B5CDE9EF6 /* BXProgressOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838BFADC16E0106AB5C53F2770B2F89D /* BXProgressOptions.swift */; };
 		977048D9738A7471526CBF97D4750FCA /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BF256802C00137C5D44205A71E0BA0 /* Base.swift */; };
 		A751707092B414C5773A0BD06D579E28 /* BXProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BB964B6C36413696DEA9D94273B94A /* BXProgressHUD-dummy.m */; };
 		B5FEE9A7AD9BF1670AE7336B06495470 /* BXHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B37F415A171914885A54F33FB00D74 /* BXHUD.swift */; };
 		BB9AEBE1FAD3A64442097409D6C29895 /* BXProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B9F6259482588BE53E201586432724F /* BXProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C03D08A4826A42AA6D84ED26A9665330 /* PinAuto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8CA18FC8ED50D3BD2116A9C195BB4A /* PinAuto.framework */; };
+		C07AC012001837D3E19E58FA1805D004 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */; };
 		CCA5CCB9454B5B7E87EAB4B4A2DDC171 /* BXProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49CCDE5A6DD46D7ACC01E9E2600ED2 /* BXProgressHUD.swift */; };
 		E1C187AFDDD407BE5E0E0B7C83EC52F1 /* BXRoundProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B302C39DD87F4F1BE96A34F77055C883 /* BXRoundProgressView.swift */; };
-		E2422026848DC1C4436CE2BD846581EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02468E810B7636F32BDADF630F787E35 /* Foundation.framework */; };
 		E460638444E01756468FC488A2D0876E /* BXProgressHUD+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C187597A5A905F1F47B7EE77BFCF9B /* BXProgressHUD+Builder.swift */; };
-		E6E267765E53C8BA564950B6EF4BA585 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90148AA32CF75069273105453F4E6A6 /* UIView+Helper.swift */; };
+		E6E267765E53C8BA564950B6EF4BA585 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D65B97C136E3BBF22D706850DA96D /* UIView+Helper.swift */; };
 		E90B596174257FD49431A2347EE73A57 /* BXBarProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD98C084326B7CF42C019FEA25388C38 /* BXBarProgressView.swift */; };
 		F082769D052F8A6E7F503EA83C39F22C /* Pods-BXProgressHUD_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A520ED586F8D74E157597B6BB1341399 /* Pods-BXProgressHUD_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F4DDCCF4B13654DA5EBA352CEF53D653 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02468E810B7636F32BDADF630F787E35 /* Foundation.framework */; };
 		F6DA9C3EB413BBC813100080FF8995E2 /* Pods-BXProgressHUD_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E658852B6E05F279A27B112A3B134D /* Pods-BXProgressHUD_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7B61A4F826D2A82484B9E018278E057 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */; };
 		FA6233D84E5A4A9553BDE577DDBA926F /* Pods-BXProgressHUD_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E23FF7C57E34FA234E4E0C8067FB864D /* Pods-BXProgressHUD_Tests-dummy.m */; };
+		FEBE1EE0B1CA55E96D559D07F44F4238 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,67 +70,58 @@
 			remoteGlobalIDString = 37D27B17BE2F3BE3E06A52A634737472;
 			remoteInfo = BXProgressHUD;
 		};
-		FE1920FD1E3C4654653317936BDA5B68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83B8E7CF1D5E91459EE6826477709558;
-			remoteInfo = "PinAuto-PinAuto";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02468E810B7636F32BDADF630F787E35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		0911BD2715A02E77E74557F49B6949C5 /* PinAuto-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinAuto-umbrella.h"; sourceTree = "<group>"; };
 		092143D950D6FC5017B35A40BF438F51 /* BXProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BXProgressHUD.modulemap; sourceTree = "<group>"; };
-		0B0A2701DC9F115279301C4993A5AEB6 /* PinAuto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PinAuto.modulemap; sourceTree = "<group>"; };
+		0B0A8D1BB41060AD38BF2B1084549D28 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9F6259482588BE53E201586432724F /* BXProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BXProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		0D567B2634CAEAA5976E61A70947EAA8 /* Pods_BXProgressHUD_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BXProgressHUD_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BF256802C00137C5D44205A71E0BA0 /* Base.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		1A0229F4A9270563C7D58483D224BD37 /* Pods-BXProgressHUD_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BXProgressHUD_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		21DBC0E643B2A1795A37FBC07FE87B2D /* ResourceBundle-PinAuto-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-PinAuto-Info.plist"; sourceTree = "<group>"; };
 		25DC0C750633C4AB8F054118FEC4F78A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "Reveal-Framework-iOS-1.6.2/Reveal.framework"; sourceTree = "<group>"; };
 		26B37F415A171914885A54F33FB00D74 /* BXHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXHUD.swift; sourceTree = "<group>"; };
-		2730AC162C9EB0D8969724346924AF0C /* UIView+Convenience.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Convenience.swift"; path = "Pod/Classes/UIView+Convenience.swift"; sourceTree = "<group>"; };
 		29E658852B6E05F279A27B112A3B134D /* Pods-BXProgressHUD_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BXProgressHUD_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2C948FAE88599501E425A1FB962A8A4B /* Pods-BXProgressHUD_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXProgressHUD_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		3326936C9B9B59A06A112D2C4FC839D7 /* PinAuto.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PinAuto.xcconfig; sourceTree = "<group>"; };
+		379D65B97C136E3BBF22D706850DA96D /* UIView+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Helper.swift"; path = "Pod/Classes/UIView+Helper.swift"; sourceTree = "<group>"; };
 		38C187597A5A905F1F47B7EE77BFCF9B /* BXProgressHUD+Builder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BXProgressHUD+Builder.swift"; sourceTree = "<group>"; };
-		3A4DF8264552C99D37971E78028201F1 /* Pods_BXProgressHUD_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BXProgressHUD_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42065C565B7639961888F4E66BF4CC69 /* PinAuto.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinAuto.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		43D4E380190E7128314B9D0B81D2EFFA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PinAuto.xcconfig; sourceTree = "<group>"; };
+		407C557B8DBF747CA7F24E084007E7CD /* PinAuto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PinAuto.modulemap; sourceTree = "<group>"; };
+		40ACBBFA20F77607C153A4CDC561C1C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		4839C2164AF553FE0C799396E0C5343F /* Pods-BXProgressHUD_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Example-resources.sh"; sourceTree = "<group>"; };
-		4A8F32D6CEFF0C9668BC3E08000F407B /* BXProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB2CC7F4BCAB3FF225A78D0C73B8B8C /* Pods-BXProgressHUD_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BXProgressHUD_Example-dummy.m"; sourceTree = "<group>"; };
-		5A7E75148762F911973760DB0CD5E0C5 /* PinAuto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinAuto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51F956432C21351927CB76EFC376CEE4 /* UIView+Convenience.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Convenience.swift"; path = "Pod/Classes/UIView+Convenience.swift"; sourceTree = "<group>"; };
+		5B88EC7B35A3AA8EEE8C04262266336B /* PinAuto-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PinAuto-dummy.m"; sourceTree = "<group>"; };
+		5D647C2D90858E780CBB5BBF3BCE967B /* BXProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E4B48ED5B3F7B7112D90AC3300A00F /* Pods-BXProgressHUD_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BXProgressHUD_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		664CFEA19F6F172EFBE5140D1D6A8FD8 /* Pods-BXProgressHUD_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		683CDC1E32DA43662A6324C3B5B8DA23 /* Pods-BXProgressHUD_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BXProgressHUD_Tests.modulemap"; sourceTree = "<group>"; };
 		6A2C5595CF8F68BD6FD37BDA582126B3 /* Pods-BXProgressHUD_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BXProgressHUD_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		71CA2B87CC3AADFC0E8E43356A6167B6 /* BXProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BXProgressHUD.xcconfig; sourceTree = "<group>"; };
 		7A8CA18FC8ED50D3BD2116A9C195BB4A /* PinAuto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinAuto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F0932608B7D58942F4B50296A08EC61 /* PinAuto-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PinAuto-dummy.m"; sourceTree = "<group>"; };
 		82A93AE50ECB31F8DAD124A500280520 /* Pods-BXProgressHUD_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXProgressHUD_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		838BFADC16E0106AB5C53F2770B2F89D /* BXProgressOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXProgressOptions.swift; sourceTree = "<group>"; };
-		891D2224F4D591CB027365943D23E50B /* Pods_BXProgressHUD_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BXProgressHUD_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE13578A30434BA9719689FBB6CE155 /* Pods-BXProgressHUD_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BXProgressHUD_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8F42E75CC0C5CAB6B8618CEBD8D09C3C /* Pods_BXProgressHUD_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BXProgressHUD_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93A656AC5A98BE6313509D59D9AE52F8 /* Pods-BXProgressHUD_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXProgressHUD_Example.release.xcconfig"; sourceTree = "<group>"; };
+		93A76515B0A437090A612DB530B835D5 /* PinAuto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinAuto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A05AE58BE25A99A7D092DB7A11F8F5C /* Pods-BXProgressHUD_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Tests-resources.sh"; sourceTree = "<group>"; };
 		A520ED586F8D74E157597B6BB1341399 /* Pods-BXProgressHUD_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BXProgressHUD_Example-umbrella.h"; sourceTree = "<group>"; };
+		A86E9C232005D1DF26A447BDC778EED0 /* UIView+PinAuto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+PinAuto.swift"; path = "Pod/Classes/UIView+PinAuto.swift"; sourceTree = "<group>"; };
 		AC49CCDE5A6DD46D7ACC01E9E2600ED2 /* BXProgressHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXProgressHUD.swift; sourceTree = "<group>"; };
 		B2151CE7C8EBB89AB6AF5A840A4786D6 /* Pods-BXProgressHUD_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B302C39DD87F4F1BE96A34F77055C883 /* BXRoundProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXRoundProgressView.swift; sourceTree = "<group>"; };
 		BB1A182E0DEBD7B5C4FC488B0E2E44AC /* BXProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BXProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		BD98C084326B7CF42C019FEA25388C38 /* BXBarProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXBarProgressView.swift; sourceTree = "<group>"; };
-		C60A507E5403491AC100EA7CF8D60BAB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C7BB964B6C36413696DEA9D94273B94A /* BXProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BXProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		CD9DCE3B4B290EDDEEB20A9FD3375942 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF30B62899578DCA73C457CFF182AE84 /* PinAuto-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinAuto-umbrella.h"; sourceTree = "<group>"; };
 		D2BE59DBD77C79C72FD1848FA2A78FCA /* BXProgressHUDMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BXProgressHUDMode.swift; sourceTree = "<group>"; };
-		D2D9BA731BA08C3F6B58BF8C60866950 /* PinAuto-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinAuto-prefix.pch"; sourceTree = "<group>"; };
 		D33A820F637241419857541AB1D3240E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D90148AA32CF75069273105453F4E6A6 /* UIView+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Helper.swift"; path = "Pod/Classes/UIView+Helper.swift"; sourceTree = "<group>"; };
-		D92A093A4A597507E0D2F8F6EC75DB0C /* UIView+PinAuto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+PinAuto.swift"; path = "Pod/Classes/UIView+PinAuto.swift"; sourceTree = "<group>"; };
+		D38CE62E67FC876CA71BCC9FA5EBC9F1 /* PinAuto-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinAuto-prefix.pch"; sourceTree = "<group>"; };
 		DD003BEC218C803CB753E95DB4964330 /* Pods-BXProgressHUD_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BXProgressHUD_Example.modulemap"; sourceTree = "<group>"; };
+		DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E23FF7C57E34FA234E4E0C8067FB864D /* Pods-BXProgressHUD_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BXProgressHUD_Tests-dummy.m"; sourceTree = "<group>"; };
 		E960136AD061537B550C0B93DE20AEA0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE466E60684EFF4CAFDCD6D3D062D33E /* Pods-BXProgressHUD_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BXProgressHUD_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,14 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F72FFB5EB8E479B7B9D56B2E2B68B93 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		74997AEC95E1E8E2961F6A6A4F1529CE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F7B61A4F826D2A82484B9E018278E057 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,9 +140,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4DDCCF4B13654DA5EBA352CEF53D653 /* Foundation.framework in Frameworks */,
+				4E6A034561F3E0C85CE3E590F79E5130 /* Foundation.framework in Frameworks */,
 				C03D08A4826A42AA6D84ED26A9665330 /* PinAuto.framework in Frameworks */,
-				042E88952AA4F5E442E7D8DF002EAD18 /* UIKit.framework in Frameworks */,
+				3D3265C278DF166FB326A488B2FFA422 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2422026848DC1C4436CE2BD846581EB /* Foundation.framework in Frameworks */,
+				C07AC012001837D3E19E58FA1805D004 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,20 +158,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86525E9B6881F75947F4FECE6A784320 /* Foundation.framework in Frameworks */,
+				FEBE1EE0B1CA55E96D559D07F44F4238 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		058365253F80E63A827339D76E09C18C /* iOS */ = {
+		12C1EAC7ED35AF7DB59BD9D7F055B2F9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				02468E810B7636F32BDADF630F787E35 /* Foundation.framework */,
-				C60A507E5403491AC100EA7CF8D60BAB /* UIKit.framework */,
+				0B0A8D1BB41060AD38BF2B1084549D28 /* Info.plist */,
+				407C557B8DBF747CA7F24E084007E7CD /* PinAuto.modulemap */,
+				3326936C9B9B59A06A112D2C4FC839D7 /* PinAuto.xcconfig */,
+				5B88EC7B35A3AA8EEE8C04262266336B /* PinAuto-dummy.m */,
+				D38CE62E67FC876CA71BCC9FA5EBC9F1 /* PinAuto-prefix.pch */,
+				0911BD2715A02E77E74557F49B6949C5 /* PinAuto-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/PinAuto";
 			sourceTree = "<group>";
 		};
 		1A0E594647DC57E0E6C29951C405FD2C /* Frameworks */ = {
@@ -205,6 +193,15 @@
 				1A0E594647DC57E0E6C29951C405FD2C /* Frameworks */,
 			);
 			path = "Reveal-iOS-SDK";
+			sourceTree = "<group>";
+		};
+		22502E155E076A9194DE0ABF32B9A3B4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */,
+				40ACBBFA20F77607C153A4CDC561C1C2 /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		2B30EAFAE565336CC596FDC67C37882A /* Pods-BXProgressHUD_Example */ = {
@@ -225,18 +222,6 @@
 			path = "Target Support Files/Pods-BXProgressHUD_Example";
 			sourceTree = "<group>";
 		};
-		30C1E4027802CFB9897FC2A34271D9DE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4A8F32D6CEFF0C9668BC3E08000F407B /* BXProgressHUD.framework */,
-				42065C565B7639961888F4E66BF4CC69 /* PinAuto.bundle */,
-				5A7E75148762F911973760DB0CD5E0C5 /* PinAuto.framework */,
-				891D2224F4D591CB027365943D23E50B /* Pods_BXProgressHUD_Example.framework */,
-				3A4DF8264552C99D37971E78028201F1 /* Pods_BXProgressHUD_Tests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		499FC31A50FD341E89E40DA175C5A5B1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				7A8CA18FC8ED50D3BD2116A9C195BB4A /* PinAuto.framework */,
-				058365253F80E63A827339D76E09C18C /* iOS */,
+				22502E155E076A9194DE0ABF32B9A3B4 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,7 +252,7 @@
 				CBC430EBE5224A6275A2AE02EC7E2A0E /* Development Pods */,
 				5B1EB053D19AE27BE86B682FB8D59B7E /* Frameworks */,
 				E3E22B053310E9711E733F6BC172C17F /* Pods */,
-				30C1E4027802CFB9897FC2A34271D9DE /* Products */,
+				D580C0847AD34E63EEF5E745FD60416D /* Products */,
 				F2AD7389A4863BD9BD6F8BDB4253A6FF /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -287,19 +272,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8BAE54F4DA9CFB2FB535DD7EF9EC0329 /* Support Files */ = {
+		8AFD19F45B359552DD66C6C5FC9DDC9C /* PinAuto */ = {
 			isa = PBXGroup;
 			children = (
-				43D4E380190E7128314B9D0B81D2EFFA /* Info.plist */,
-				0B0A2701DC9F115279301C4993A5AEB6 /* PinAuto.modulemap */,
-				482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */,
-				7F0932608B7D58942F4B50296A08EC61 /* PinAuto-dummy.m */,
-				D2D9BA731BA08C3F6B58BF8C60866950 /* PinAuto-prefix.pch */,
-				CF30B62899578DCA73C457CFF182AE84 /* PinAuto-umbrella.h */,
-				21DBC0E643B2A1795A37FBC07FE87B2D /* ResourceBundle-PinAuto-Info.plist */,
+				51F956432C21351927CB76EFC376CEE4 /* UIView+Convenience.swift */,
+				379D65B97C136E3BBF22D706850DA96D /* UIView+Helper.swift */,
+				A86E9C232005D1DF26A447BDC778EED0 /* UIView+PinAuto.swift */,
+				12C1EAC7ED35AF7DB59BD9D7F055B2F9 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/PinAuto";
+			path = PinAuto;
 			sourceTree = "<group>";
 		};
 		9262699B50452224BF67CB6D470E3704 /* BXProgressHUD */ = {
@@ -310,17 +291,6 @@
 			);
 			name = BXProgressHUD;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		CA46514EBD6D6BA082F37E0C4A24CAD5 /* PinAuto */ = {
-			isa = PBXGroup;
-			children = (
-				2730AC162C9EB0D8969724346924AF0C /* UIView+Convenience.swift */,
-				D90148AA32CF75069273105453F4E6A6 /* UIView+Helper.swift */,
-				D92A093A4A597507E0D2F8F6EC75DB0C /* UIView+PinAuto.swift */,
-				8BAE54F4DA9CFB2FB535DD7EF9EC0329 /* Support Files */,
-			);
-			path = PinAuto;
 			sourceTree = "<group>";
 		};
 		CBC430EBE5224A6275A2AE02EC7E2A0E /* Development Pods */ = {
@@ -337,6 +307,17 @@
 				8719295EE6137C2020D6BFF0F0F5AE57 /* Classes */,
 			);
 			path = Pod;
+			sourceTree = "<group>";
+		};
+		D580C0847AD34E63EEF5E745FD60416D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D647C2D90858E780CBB5BBF3BCE967B /* BXProgressHUD.framework */,
+				93A76515B0A437090A612DB530B835D5 /* PinAuto.framework */,
+				8F42E75CC0C5CAB6B8618CEBD8D09C3C /* Pods_BXProgressHUD_Example.framework */,
+				0D567B2634CAEAA5976E61A70947EAA8 /* Pods_BXProgressHUD_Tests.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E113125D087C6BA5A43B09F9D9D51A61 /* Pods-BXProgressHUD_Tests */ = {
@@ -360,7 +341,7 @@
 		E3E22B053310E9711E733F6BC172C17F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CA46514EBD6D6BA082F37E0C4A24CAD5 /* PinAuto */,
+				8AFD19F45B359552DD66C6C5FC9DDC9C /* PinAuto */,
 				1FE0A0F90D2CC332430447C8D453D9FF /* Reveal-iOS-SDK */,
 			);
 			name = Pods;
@@ -428,25 +409,8 @@
 			);
 			name = BXProgressHUD;
 			productName = BXProgressHUD;
-			productReference = 4A8F32D6CEFF0C9668BC3E08000F407B /* BXProgressHUD.framework */;
+			productReference = 5D647C2D90858E780CBB5BBF3BCE967B /* BXProgressHUD.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		83B8E7CF1D5E91459EE6826477709558 /* PinAuto-PinAuto */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E022BDACD1D4CE06AC1F0B35FC417C5B /* Build configuration list for PBXNativeTarget "PinAuto-PinAuto" */;
-			buildPhases = (
-				2C500ED670A499281EACE6C9D47AAAED /* Sources */,
-				74997AEC95E1E8E2961F6A6A4F1529CE /* Frameworks */,
-				D45DDF843EBF0DEA48E1CA88832ABC11 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PinAuto-PinAuto";
-			productName = "PinAuto-PinAuto";
-			productReference = 42065C565B7639961888F4E66BF4CC69 /* PinAuto.bundle */;
-			productType = "com.apple.product-type.bundle";
 		};
 		8C71C932D9B0B69410BDE09167F78F93 /* Pods-BXProgressHUD_Tests */ = {
 			isa = PBXNativeTarget;
@@ -464,7 +428,7 @@
 			);
 			name = "Pods-BXProgressHUD_Tests";
 			productName = "Pods-BXProgressHUD_Tests";
-			productReference = 3A4DF8264552C99D37971E78028201F1 /* Pods_BXProgressHUD_Tests.framework */;
+			productReference = 0D567B2634CAEAA5976E61A70947EAA8 /* Pods_BXProgressHUD_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ADC6AB68B37029E9275B7C06F1CD94F3 /* PinAuto */ = {
@@ -473,17 +437,15 @@
 			buildPhases = (
 				9317B4F27C55B6D25CE990C7352CD00F /* Sources */,
 				86D191C16152D1FDD146CACFD565F91C /* Frameworks */,
-				B39AE8556D6D2E45997A63D3D3E530B2 /* Resources */,
 				E61467CDA811D37B099A6C70B7845420 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				55D3093B10F3C4172092CE660AA2CF4F /* PBXTargetDependency */,
 			);
 			name = PinAuto;
 			productName = PinAuto;
-			productReference = 5A7E75148762F911973760DB0CD5E0C5 /* PinAuto.framework */;
+			productReference = 93A76515B0A437090A612DB530B835D5 /* PinAuto.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B9F497FA231063A33A43E95B964BD8F6 /* Pods-BXProgressHUD_Example */ = {
@@ -502,7 +464,7 @@
 			);
 			name = "Pods-BXProgressHUD_Example";
 			productName = "Pods-BXProgressHUD_Example";
-			productReference = 891D2224F4D591CB027365943D23E50B /* Pods_BXProgressHUD_Example.framework */;
+			productReference = 8F42E75CC0C5CAB6B8618CEBD8D09C3C /* Pods_BXProgressHUD_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -511,7 +473,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -522,45 +484,19 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 30C1E4027802CFB9897FC2A34271D9DE /* Products */;
+			productRefGroup = D580C0847AD34E63EEF5E745FD60416D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				37D27B17BE2F3BE3E06A52A634737472 /* BXProgressHUD */,
 				ADC6AB68B37029E9275B7C06F1CD94F3 /* PinAuto */,
-				83B8E7CF1D5E91459EE6826477709558 /* PinAuto-PinAuto */,
 				B9F497FA231063A33A43E95B964BD8F6 /* Pods-BXProgressHUD_Example */,
 				8C71C932D9B0B69410BDE09167F78F93 /* Pods-BXProgressHUD_Tests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		B39AE8556D6D2E45997A63D3D3E530B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7BFC8E148B2BB648334E5B316BD4EECB /* PinAuto.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D45DDF843EBF0DEA48E1CA88832ABC11 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		2C500ED670A499281EACE6C9D47AAAED /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8AB800ECD5D3CC662FCE1EC3FDD8EAEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -612,12 +548,6 @@
 			name = PinAuto;
 			target = ADC6AB68B37029E9275B7C06F1CD94F3 /* PinAuto */;
 			targetProxy = DC452E4FAF57F6B1005FDD6B419067ED /* PBXContainerItemProxy */;
-		};
-		55D3093B10F3C4172092CE660AA2CF4F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "PinAuto-PinAuto";
-			target = 83B8E7CF1D5E91459EE6826477709558 /* PinAuto-PinAuto */;
-			targetProxy = FE1920FD1E3C4654653317936BDA5B68 /* PBXContainerItemProxy */;
 		};
 		80AFA7AB85145B7740E5EC20EEBCCB74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -680,64 +610,11 @@
 			};
 			name = Debug;
 		};
-		6124C05330F458757C08F5865D3CF8FB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PinAuto";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/PinAuto/ResourceBundle-PinAuto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = PinAuto;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		811519CB8F683AC06F9C98B55AC40F11 /* Release */ = {
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		882EB4391EC2E701934974DA86F7343F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -811,7 +688,7 @@
 		};
 		947D620A3C23D3F4D854BD19189FDE1A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */;
+			baseConfigurationReference = 3326936C9B9B59A06A112D2C4FC839D7 /* PinAuto.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -840,7 +717,7 @@
 		};
 		981B8801E8A59A67D58FD728BD24E13B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */;
+			baseConfigurationReference = 3326936C9B9B59A06A112D2C4FC839D7 /* PinAuto.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -897,22 +774,43 @@
 			};
 			name = Release;
 		};
-		B2D83740C9E2FDE7CF7F982BE337A2A6 /* Debug */ = {
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 482A1805D8CFDF2A587D3BEC970E50AE /* PinAuto.xcconfig */;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PinAuto";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/PinAuto/ResourceBundle-PinAuto-Info.plist";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = PinAuto;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		D8E837906504C50F819B68B1543611C7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1016,8 +914,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				882EB4391EC2E701934974DA86F7343F /* Debug */,
-				811519CB8F683AC06F9C98B55AC40F11 /* Release */,
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1045,15 +943,6 @@
 			buildConfigurations = (
 				F59EA62D8B2FBECEBAF28C5A1177D9AC /* Debug */,
 				AA3A130F964604EB7C74E150EE282F39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E022BDACD1D4CE06AC1F0B35FC417C5B /* Build configuration list for PBXNativeTarget "PinAuto-PinAuto" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2D83740C9E2FDE7CF7F982BE337A2A6 /* Debug */,
-				6124C05330F458757C08F5865D3CF8FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

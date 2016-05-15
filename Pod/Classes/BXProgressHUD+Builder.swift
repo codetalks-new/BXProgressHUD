@@ -69,15 +69,6 @@ public extension BXProgressHUD{
             return self
         }
         
-        public func opacity(opacity:CGFloat) -> Self{
-            hud.opacity = opacity
-            return self
-        }
-        
-        public func color(color:UIColor) -> Self{
-            hud.color = color
-            return self
-        }
         
         public func removeFromSuperViewOnHide(remove:Bool) -> Self{
             hud.removeFromSuperViewOnHide = remove

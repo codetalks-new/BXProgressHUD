@@ -28,10 +28,10 @@ public extension UIView{
   }
   
   public func pac_aspectRatio(ratio:CGFloat){
-    pa_aspectRatio(1.0).install()
+    pa_aspectRatio(ratio).install()
   }
   
-  public func pac_edge(edgeInsets:UIEdgeInsets = UIEdgeInsetsZero){
+  public func pac_edge(edgeInsets:UIEdgeInsets){
     pac_edge(edgeInsets.top, left: edgeInsets.left, bottom: edgeInsets.bottom, right: edgeInsets.right)
   }
   
@@ -47,11 +47,11 @@ public extension UIView{
   }
   
   @nonobjc
-  public func pac_edge(offset:UIOffset = UIOffsetZero){
+  public func pac_edge(offset:UIOffset){
     pac_edge(offset.vertical, left: offset.horizontal, bottom: offset.vertical, right: offset.horizontal)
   }
   
-  public func pac_center(offset:UIOffset = UIOffsetZero){
+  public func pac_center(offset:UIOffset){
     pa_centerX.offset(offset.horizontal).install()
     pa_centerY.offset(offset.vertical).install()
   }

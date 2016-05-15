@@ -69,35 +69,8 @@ public class BXProgressHUD : UIView {
    */
   weak public var delegate: BXProgressHUDDelegate?
   
-  
-  
-  /**
-   * The opacity of the HUD window. Defaults to 0.8 (80% opacity).
-   */
-  public var opacity: CGFloat = 0.8{
-    didSet{
-      updateBackgroundColor()
-    }
-  }
-  
-  /**
-   * The color of the HUD window. Defaults to black. If this property is set, color is set using
-   * this UIColor and the opacity property is not used.  using retain because performing copy on
-   * UIColor base colors (like [UIColor greenColor]) cause problems with the copyZone.
-   */
-  public var color: UIColor? = UIColor(white: 0.0, alpha: 0.0){
-    didSet{
-      updateBackgroundColor()
-    }
-  }
-  
-  func updateBackgroundColor(){
-    if let color = self.color{
-      contentView.backgroundColor = color.colorWithAlphaComponent(opacity)
-    }else{
-      contentView.backgroundColor = UIColor(white: 0.0, alpha: opacity)
-    }
-  }
+
+
   
   /**
    * The x-axis offset of the HUD relative to the centre of the superview.
@@ -121,7 +94,7 @@ public class BXProgressHUD : UIView {
    */
   public var cornerRadius: CGFloat = 10.0{
     didSet{
-      contentView.layer.cornerRadius = cornerRadius
+      containerEffectView.layer.cornerRadius = cornerRadius
     }
   }
   
@@ -164,17 +137,23 @@ public class BXProgressHUD : UIView {
    */
   public var removeFromSuperViewOnHide: Bool = false
   
-  let contentView:UIView = UIView(frame: CGRectZero)
+  let containerEffectView = UIVisualEffectView(frame: CGRect.zero)
+  var containerView:UIView{ return containerEffectView.contentView }
   
   public let label :UILabel =  UILabel(frame: CGRectZero)
   
   public let detailsLabel :UILabel =  UILabel(frame: CGRectZero)
  
   public var checkmarkImage:UIImage?
+ 
+  public var padding:CGFloat = 20
   
   
-  
-  
+  public var blurStyle : UIBlurEffectStyle = .Dark{
+    didSet{
+      containerEffectView.effect = UIBlurEffect(style: blurStyle)
+    }
+  }
  
   
   /**
@@ -233,6 +212,11 @@ public class BXProgressHUD : UIView {
   }
   
   
+  var containerWidthConstraint:NSLayoutConstraint?
+  var containerHeightConstraint:NSLayoutConstraint?
+  
+//  public var minHUDSize = CGSize(width: 100, height: 100)
+  
   func commonInit(){
     // Transparent background
     backgroundColor = .clearColor()
@@ -240,12 +224,12 @@ public class BXProgressHUD : UIView {
     // Make it invisible for now
     alpha = 0.0
     
-    contentView.translatesAutoresizingMaskIntoConstraints = false
-    addSubview(contentView)
-    contentView.pa_centerX.install()
-    contentView.pa_centerY.install()
-//    contentView.pa_height.gte(80).withLowPriority.install()
-//    contentView.pa_width.gte(80).withLowPriority.install()
+    containerEffectView.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(containerEffectView)
+    containerEffectView.pa_centerX.install()
+    containerEffectView.pa_centerY.install()
+    containerWidthConstraint = containerEffectView.pa_width.eq(100).install()
+    containerHeightConstraint = containerEffectView.pa_height.eq(100).install()
     
     updateIndicators()
     updateLabels()
@@ -258,20 +242,7 @@ public class BXProgressHUD : UIView {
   
   
   // MARK: UI
-  func updateLabels(){
-    for childView in [label,detailsLabel]{
-      childView.removeFromSuperview()
-      childView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    if mode.isOnlyText{
-      for childView in [label,detailsLabel]{
-        contentView.addSubview(childView)
-      }
-    }else{
-        contentView.addSubview(label)
-    }
-  }
-  
+
   func updateIndicators(){
     
     #if DEBUG
@@ -309,34 +280,31 @@ public class BXProgressHUD : UIView {
       self.indicator?.removeFromSuperview()
       self.indicator = indicator
       indicator.translatesAutoresizingMaskIntoConstraints = false
-      contentView.addSubview(indicator)
+      containerView.addSubview(indicator)
     }
   }
   
-  func imageByName(name:String) -> UIImage?{
-    let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
-    guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
-      NSLog("Resources bundle not found")
-      return nil
-    }
-    
-    guard let bundle = NSBundle(URL: bundleURL) else{
-      NSLog("Could not load Resources Bundle \(bundleURL)")
-      return nil
-    }
-    if let imagePath = bundle.pathForResource(name, ofType: "png"){
-      return UIImage(contentsOfFile: imagePath)
-    }else{
-      return nil
-    }
-    
-  }
+
   
   func reAutoLayout(){
     updateLabels()
     updateIndicators()
     setNeedsUpdateConstraints()
     updateConstraintsIfNeeded()
+  }
+ 
+  func updateLabels(){
+    for childView in [label,detailsLabel]{
+      childView.removeFromSuperview()
+      childView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    if mode.isOnlyText{
+      for childView in [label,detailsLabel]{
+        containerView.addSubview(childView)
+      }
+    }else{
+      containerView.addSubview(label)
+    }
   }
   
   
@@ -347,44 +315,62 @@ public class BXProgressHUD : UIView {
       return
     }
     installConstraintsWithIndicator(indicator)
+    updateHUDSize()
   }
   
   func installConstraintsForTextMode(){
     if mode.isOnlyText{
-      for labelView in [label,detailsLabel]{
-        labelView.pac_horizontal(15)
-      }
       label.pa_top.eq(15).install()
+      label.pa_centerX.withPriority(750).install()
+      label.pa_leading.gte(15).install()
+      label.pa_trailing.gte(15).install()
+      
+      detailsLabel.pac_horizontal(15)
       detailsLabel.pa_below(label, offset: 4).install()
       detailsLabel.pa_bottom.eq(15).install()
     }else{
       label.pac_horizontal(15)
       label.pac_vertical(15)
     }
-    
   }
   
   func installConstraintsWithIndicator(indicator:UIView){
-    indicator.pa_centerX.install()
-    indicator.pa_top.eq(15).install()
-    indicator.setContentCompressionResistancePriority(998, forAxis: .Horizontal)
-    indicator.setContentCompressionResistancePriority(998, forAxis: .Vertical)
-    indicator.setContentHuggingPriority(998, forAxis: .Horizontal)
-    indicator.setContentHuggingPriority(998, forAxis: .Vertical)
-  
     let isEmptyLabel = label.text?.isEmpty ?? true
+    indicator.pa_centerX.withPriority(750).install()
+    indicator.setContentHuggingPriority(1000, forAxis: .Horizontal)
+    
+    let indicatorWidth =  indicator.intrinsicContentSize().width
+    let labelWidth = label.intrinsicContentSize().width
+    
     if isEmptyLabel{
-      indicator.pa_centerY.install()
-      indicator.pa_leading.eq(15).install()
+      indicator.pa_top.eq(padding).install()
+      indicator.pa_leading.eq(padding).install()
+      indicator.pa_trailing.eq(padding).install()
+      indicator.pa_bottom.eq(padding).install()
     }else{
-      label.setContentCompressionResistancePriority(997, forAxis: .Horizontal)
+      label.pa_centerX.withPriority(740).install()
+      indicator.pa_top.eq(padding).install()
+      
       label.pa_below(indicator, offset: 8).install()
-      label.pa_leading.eq(15).install()
-      label.pa_trailing.eq(15).install()
-      label.pa_bottom.eq(15).install()
-//      indicator.pa_leading.gte(15).withPriority(500).install()
-//      indicator.pa_trailing.gte(15).withPriority(500).install()
+      label.pa_bottom.eq(padding).install()
+      
+      if indicatorWidth > labelWidth{
+        indicator.pa_leading.eq(padding).install()
+        indicator.pa_trailing.eq(padding).install()
+      }else{
+        label.pa_leading.eq(padding).install()
+        label.pa_trailing.eq(padding).install()
+      }
     }
+    
+  }
+  
+  func updateHUDSize(){
+    let maxHUDSize = CGSize(width:bounds.width - margin * 2 ,height: bounds.height - margin * 2)
+    let measureSize = containerView.systemLayoutSizeFittingSize(maxHUDSize)
+    
+    containerWidthConstraint?.constant = measureSize.width
+    containerHeightConstraint?.constant = measureSize.height
   }
   
   // MARK: KVO
@@ -403,8 +389,8 @@ public class BXProgressHUD : UIView {
   }
   
   func setupAttrs(){
-    updateBackgroundColor()
-    contentView.layer.cornerRadius = cornerRadius
+    containerEffectView.effect = UIBlurEffect(style: .Dark)
+//    containerEffectView.layer.cornerRadius = cornerRadius
     
     label.textColor = .whiteColor()
     label.font = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize)
@@ -448,8 +434,26 @@ public class BXProgressHUD : UIView {
     }
   }
   
-  
-//  
+ 
+  func imageByName(name:String) -> UIImage?{
+    let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
+    guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
+      NSLog("Resources bundle not found")
+      return nil
+    }
+    
+    guard let bundle = NSBundle(URL: bundleURL) else{
+      NSLog("Could not load Resources Bundle \(bundleURL)")
+      return nil
+    }
+    if let imagePath = bundle.pathForResource(name, ofType: "png"){
+      return UIImage(contentsOfFile: imagePath)
+    }else{
+      return nil
+    }
+    
+  }
+//
 //  public override func drawRect(rect: CGRect) {
 //    super.drawRect(rect)
 //    
