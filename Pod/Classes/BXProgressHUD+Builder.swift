@@ -16,7 +16,6 @@ public extension BXProgressHUD{
         public init(forView:UIView){
             hud = BXProgressHUD()
             targetView = forView
-            hud.attachTo(targetView)
         }
         
         public convenience init(){
@@ -114,7 +113,7 @@ public extension BXProgressHUD{
         }
         
         public func create() -> BXProgressHUD{
-            targetView.addSubview(hud)
+            hud.attachTo(targetView)
             return hud
         }
         

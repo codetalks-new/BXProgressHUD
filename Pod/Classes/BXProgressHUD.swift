@@ -197,7 +197,8 @@ public class BXProgressHUD : UIView {
   
   private var containerView:BXHUDContainerView = BXHUDIndicatorContainerView()
   private var isIniting = false
-  init(mode:BXHUDMode = BXHUDMode.Indeterminate){
+  
+  public init(mode:BXHUDMode = BXHUDMode.Indeterminate){
     isIniting = true
     self.mode = mode
     super.init(frame: CGRect.zero)

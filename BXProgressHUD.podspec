@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXProgressHUD"
-  s.version          = "1.7.0"
+  s.version          = "1.7.1"
   s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 2.1 with some new feature"
 
 # This description is used to generate tags and improve search results.
