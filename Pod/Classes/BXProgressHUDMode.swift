@@ -39,3 +39,5 @@ public extension BXProgressHUDMode{
     return self == .CustomView
   }
 }
+
+public typealias BXHUDMode = BXProgressHUDMode

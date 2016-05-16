@@ -40,7 +40,7 @@ public struct BXHUD{
   static func globalHUD() -> BXProgressHUD{
     guard let window = window else{
       // 此 HUD 将不会显示，并且使用之后马上被内存回收，所以没什么坏的影响
-      return BXProgressHUD(frame:CGRectZero)
+      return BXProgressHUD()
     }
     let hud:BXProgressHUD
     if let existsHUD = BXProgressHUD.HUDForView(window){

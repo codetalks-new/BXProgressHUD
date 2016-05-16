@@ -33,7 +33,9 @@ public class BXProgressHUD : UIView {
    */
   public var mode: BXProgressHUDMode = .Indeterminate{
     didSet{
-      shouldUpdateIndicators()
+      if !isIniting{
+        shouldUpdateIndicators()
+      }
     }
   }
   
@@ -42,13 +44,7 @@ public class BXProgressHUD : UIView {
    *
    * @see BXProgressHUDAnimation
    */
-  public var animationType: BXProgressHUDAnimation  = .Fade{
-    didSet{
-      shouldUpdateIndicators()
-    }
-  }
-  
-  
+  public var animationType: BXProgressHUDAnimation  = .Fade
   
   
   /**
@@ -92,9 +88,9 @@ public class BXProgressHUD : UIView {
    * The corner radius for the HUD
    * Defaults to 10.0
    */
-  public var cornerRadius: CGFloat = 10.0{
+  public var cornerRadius: CGFloat = 0.0{
     didSet{
-      containerEffectView.layer.cornerRadius = cornerRadius
+      containerView.layer.cornerRadius = cornerRadius
     }
   }
   
@@ -137,8 +133,6 @@ public class BXProgressHUD : UIView {
    */
   public var removeFromSuperViewOnHide: Bool = false
   
-  let containerEffectView = UIVisualEffectView(frame: CGRect.zero)
-  var containerView:UIView{ return containerEffectView.contentView }
   
   public let label :UILabel =  UILabel(frame: CGRectZero)
   
@@ -148,10 +142,12 @@ public class BXProgressHUD : UIView {
  
   public var padding:CGFloat = 20
   
+
+  
   
   public var blurStyle : UIBlurEffectStyle = .Dark{
     didSet{
-      containerEffectView.effect = UIBlurEffect(style: blurStyle)
+      containerView.backgroundView.effect = UIBlurEffect(style: blurStyle)
     }
   }
  
@@ -162,7 +158,9 @@ public class BXProgressHUD : UIView {
    */
   public var activityIndicatorColor: UIColor = .whiteColor(){
     didSet{
-      shouldUpdateIndicators()
+      if let activityIndicator = indicator as? UIActivityIndicatorView{
+        activityIndicator.color = activityIndicatorColor
+      }
     }
     
   }
@@ -177,6 +175,13 @@ public class BXProgressHUD : UIView {
       }
     }
   }
+  
+  private var indicator:UIView?{
+    if let indicatorContainer = containerView as? BXHUDIndicatorContainerView{
+      return indicatorContainer.indicator
+    }
+    return nil
+  }
 
   /**
    * Force the HUD dimensions to be equal if possible.
@@ -188,23 +193,29 @@ public class BXProgressHUD : UIView {
   var isFinished = false
   var rotationTransform = CGAffineTransformIdentity
   
-  var indicator:UIView?
   var showStarted:NSDate?
   
-  
-  
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
+  private var containerView:BXHUDContainerView = BXHUDIndicatorContainerView()
+  private var isIniting = false
+  init(mode:BXHUDMode = BXHUDMode.Indeterminate){
+    isIniting = true
+    self.mode = mode
+    super.init(frame: CGRect.zero)
+    self.containerView = self.containerViewOfMode(mode)
     commonInit()
+    isIniting = false
   }
   
   
-  public convenience init(view:UIView){
-    self.init(frame:view.bounds)
+  public func attachTo(view:UIView){
+    self.removeFromSuperview()
+    frame = view.bounds
+    view.addSubview(self)
   }
-  
-  public convenience init(window:UIWindow){
-    self.init(view:window)
+ 
+  @nonobjc
+  public func attachTo(window:UIWindow){
+    self.attachTo(window as UIView)
   }
   
   required public init?(coder aDecoder: NSCoder) {
@@ -212,10 +223,7 @@ public class BXProgressHUD : UIView {
   }
   
   
-  var containerWidthConstraint:NSLayoutConstraint?
-  var containerHeightConstraint:NSLayoutConstraint?
   
-//  public var minHUDSize = CGSize(width: 100, height: 100)
   
   func commonInit(){
     // Transparent background
@@ -223,17 +231,7 @@ public class BXProgressHUD : UIView {
     opaque = false
     // Make it invisible for now
     alpha = 0.0
-    
-    containerEffectView.translatesAutoresizingMaskIntoConstraints = false
-    addSubview(containerEffectView)
-    containerEffectView.pa_centerX.install()
-    containerEffectView.pa_centerY.install()
-    containerWidthConstraint = containerEffectView.pa_width.eq(100).install()
-    containerHeightConstraint = containerEffectView.pa_height.eq(100).install()
-    
-    updateIndicators()
-    updateLabels()
-    installConstraints()
+    shouldUpdateIndicators()
     setupAttrs()
     
     registerForNotifications()
@@ -243,154 +241,44 @@ public class BXProgressHUD : UIView {
   
   // MARK: UI
 
-  func updateIndicators(){
-    
-    #if DEBUG
-      NSLog("\(#function)")
-    #endif
-    let newIndicator:UIView?
+
+  
+  func indicatorOfMode(mode:BXHUDMode) -> UIView?{
     switch mode{
     case .Indeterminate:
       let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
       indicator.color = activityIndicatorColor
       indicator.startAnimating()
-      newIndicator = indicator
+      return indicator
     case .Checkmark:
       if let image = checkmarkImage{
-        newIndicator = UIImageView(image: image)
-      }else{
-        newIndicator = nil
+        return UIImageView(image: image)
       }
+      return nil
     case .DeterminateHorizontalBar:
-      newIndicator = BXBarProgressView()
+      return  BXBarProgressView()
     case .Determinate,.AnnularDeterminate:
       let indicator = BXRoundProgressView()
       indicator.annular = mode == .AnnularDeterminate
-      newIndicator = indicator
+      return indicator
     case .CustomView:
-      newIndicator = customView
+      return customView
     case .Text:
-      indicator?.removeFromSuperview()
-      indicator = nil
-      newIndicator = nil
-      
+      return nil
     }
-    
-    if let indicator = newIndicator {
-      self.indicator?.removeFromSuperview()
-      self.indicator = indicator
-      indicator.translatesAutoresizingMaskIntoConstraints = false
-      containerView.addSubview(indicator)
+  }
+  
+  func containerViewOfMode(mode:BXHUDMode) -> BXHUDContainerView{
+    if let indicator = indicatorOfMode(mode){
+      return BXHUDIndicatorContainerView(mode: mode, indicator: indicator, titleLabel: label)
+    }else{
+      return BXHUDTextContainerView(mode: mode, titleLabel: label, detailsLabel: detailsLabel)
     }
   }
   
 
-  
-  func reAutoLayout(){
-    updateLabels()
-    updateIndicators()
-    setNeedsUpdateConstraints()
-    updateConstraintsIfNeeded()
-  }
- 
-  func updateLabels(){
-    for childView in [label,detailsLabel]{
-      childView.removeFromSuperview()
-      childView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    if mode.isOnlyText{
-      for childView in [label,detailsLabel]{
-        containerView.addSubview(childView)
-      }
-    }else{
-      containerView.addSubview(label)
-    }
-  }
-  
-  
-  func  installConstraints() {
-    updateLabels()
-    guard let indicator = self.indicator else{
-      installConstraintsForTextMode()
-      return
-    }
-    installConstraintsWithIndicator(indicator)
-    updateHUDSize()
-  }
-  
-  func installConstraintsForTextMode(){
-    if mode.isOnlyText{
-      label.pa_top.eq(15).install()
-      label.pa_centerX.withPriority(750).install()
-      label.pa_leading.gte(15).install()
-      label.pa_trailing.gte(15).install()
-      
-      detailsLabel.pac_horizontal(15)
-      detailsLabel.pa_below(label, offset: 4).install()
-      detailsLabel.pa_bottom.eq(15).install()
-    }else{
-      label.pac_horizontal(15)
-      label.pac_vertical(15)
-    }
-  }
-  
-  func installConstraintsWithIndicator(indicator:UIView){
-    let isEmptyLabel = label.text?.isEmpty ?? true
-    indicator.pa_centerX.withPriority(750).install()
-    indicator.setContentHuggingPriority(1000, forAxis: .Horizontal)
-    
-    let indicatorWidth =  indicator.intrinsicContentSize().width
-    let labelWidth = label.intrinsicContentSize().width
-    
-    if isEmptyLabel{
-      indicator.pa_top.eq(padding).install()
-      indicator.pa_leading.eq(padding).install()
-      indicator.pa_trailing.eq(padding).install()
-      indicator.pa_bottom.eq(padding).install()
-    }else{
-      label.pa_centerX.withPriority(740).install()
-      indicator.pa_top.eq(padding).install()
-      
-      label.pa_below(indicator, offset: 8).install()
-      label.pa_bottom.eq(padding).install()
-      
-      if indicatorWidth > labelWidth{
-        indicator.pa_leading.eq(padding).install()
-        indicator.pa_trailing.eq(padding).install()
-      }else{
-        label.pa_leading.eq(padding).install()
-        label.pa_trailing.eq(padding).install()
-      }
-    }
-    
-  }
-  
-  func updateHUDSize(){
-    let maxHUDSize = CGSize(width:bounds.width - margin * 2 ,height: bounds.height - margin * 2)
-    let measureSize = containerView.systemLayoutSizeFittingSize(maxHUDSize)
-    
-    containerWidthConstraint?.constant = measureSize.width
-    containerHeightConstraint?.constant = measureSize.height
-  }
-  
-  // MARK: KVO
-  func shouldUpdateIndicators(){
-    reAutoLayout()
-  }
-  
-  func shouldUpdateConstraints(){
-    reAutoLayout()
-  }
-  
-  
-  func shouldUpdateUI(){
-    setNeedsLayout()
-    setNeedsDisplay()
-  }
-  
   func setupAttrs(){
-    containerEffectView.effect = UIBlurEffect(style: .Dark)
-//    containerEffectView.layer.cornerRadius = cornerRadius
+//    containerView.layer.cornerRadius = cornerRadius
     
     label.textColor = .whiteColor()
     label.font = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize)
@@ -409,21 +297,25 @@ public class BXProgressHUD : UIView {
     
   }
   
-  public override func layoutSubviews() {
-    super.layoutSubviews()
-    #if DEBUG
-      NSLog("\(#function)")
-    #endif
+  func shouldUpdateIndicators(){
+    containerView.removeFromSuperview()
+    containerView = containerViewOfMode(mode)
+    
+    containerView.backgroundView.effect = UIBlurEffect(style: blurStyle)
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.layer.cornerRadius = cornerRadius
+    
+    addSubview(containerView)
+    
+    installConstraints()
   }
   
-  public override func updateConstraints() {
-    #if DEBUG
-      NSLog("\(#function)")
-    #endif
-    installConstraints()
-    super.updateConstraints() // Call [super updateConstraints] as the final step in your implementation.
+  func installConstraints(){
+    
+    containerView.pa_centerX.offset(xOffset).install()
+    containerView.pa_centerY.offset(yOffset).install()
   }
-
+  
   public override func willMoveToSuperview(newSuperview: UIView?) {
     super.willMoveToSuperview(newSuperview)
     #if DEBUG
@@ -453,44 +345,6 @@ public class BXProgressHUD : UIView {
     }
     
   }
-//
-//  public override func drawRect(rect: CGRect) {
-//    super.drawRect(rect)
-//    
-//    let ctx = UIGraphicsGetCurrentContext()
-//    UIGraphicsPushContext(ctx!)
-//    
-//    if dimBackground{
-//      // Draw radial gradient
-//      // Gradient colors
-//      let gradLocationsNum = 2
-//      let gradLocations : [CGFloat] = [0.0,1.0]
-//      let colorSpace = CGColorSpaceCreateDeviceRGB()
-//      // two color RGBA
-//      let gradColors :[CGFloat] = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.75]
-//      let gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum)
-//      let gradCenter = CGPoint(x: bounds.midX, y: bounds.midY)
-//      let gradRadius = min(bounds.width,bounds.height)
-//      CGContextDrawRadialGradient(ctx, gradient, gradCenter, 0, gradCenter, gradRadius, .DrawsAfterEndLocation)
-//      
-//    }
-//    
-//    if let color = color{
-//      color.setFill()
-//    }else{
-//      CGContextSetGrayFillColor(ctx, 0.0, self.opacity)
-//    
-//    }
-//    
-//    // Draw rounded HUD background rect
-//    let boxRect = contentView.bounds
-//    let roundPath = UIBezierPath(roundedRect: boxRect, cornerRadius: cornerRadius)
-//    roundPath.fill()
-//    
-//    UIGraphicsPopContext()
-//  }
-//  
-  
   
   deinit{
     NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -513,7 +367,7 @@ extension BXProgressHUD{
 extension BXProgressHUD{
   
   public static func showHUDAddedTo(view:UIView, animated:Bool = true) -> BXProgressHUD{
-    let hud = BXProgressHUD(view: view)
+    let hud = BXProgressHUD(mode: BXHUDMode.Indeterminate)
     hud.removeFromSuperViewOnHide = true
     view.addSubview(hud)
     hud.show(animated)
@@ -592,7 +446,6 @@ extension BXProgressHUD{
   func updateForCurrentOrientationAnimated(animated:Bool = true){
     if let superview = self.superview{
       bounds = superview.bounds
-      reAutoLayout()
     }
   }
 }

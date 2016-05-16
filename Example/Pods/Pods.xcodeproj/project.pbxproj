@@ -12,6 +12,7 @@
 		2FE2A2FC5D66ADCB47937A2BCCD889D2 /* Pods-BXProgressHUD_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2CC7F4BCAB3FF225A78D0C73B8B8C /* Pods-BXProgressHUD_Example-dummy.m */; };
 		38F38077E795F0E98E6FC591636A99B3 /* UIView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F956432C21351927CB76EFC376CEE4 /* UIView+Convenience.swift */; };
 		3D3265C278DF166FB326A488B2FFA422 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40ACBBFA20F77607C153A4CDC561C1C2 /* UIKit.framework */; };
+		3E18A9031CE957BB0051B807 /* BXHUDContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E18A9021CE957BB0051B807 /* BXHUDContainerView.swift */; };
 		4E6A034561F3E0C85CE3E590F79E5130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE43D86FB1C822D5D0123A7CC47C2DCD /* Foundation.framework */; };
 		66FF82C23B7B7289AB010BBE5CDF79A5 /* PinAuto-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B88EC7B35A3AA8EEE8C04262266336B /* PinAuto-dummy.m */; };
 		7BF9F85D231299E1E702E46DE7E6C367 /* BXProgressHUDMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE59DBD77C79C72FD1848FA2A78FCA /* BXProgressHUDMode.swift */; };
@@ -87,6 +88,7 @@
 		3326936C9B9B59A06A112D2C4FC839D7 /* PinAuto.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PinAuto.xcconfig; sourceTree = "<group>"; };
 		379D65B97C136E3BBF22D706850DA96D /* UIView+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Helper.swift"; path = "Pod/Classes/UIView+Helper.swift"; sourceTree = "<group>"; };
 		38C187597A5A905F1F47B7EE77BFCF9B /* BXProgressHUD+Builder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "BXProgressHUD+Builder.swift"; sourceTree = "<group>"; };
+		3E18A9021CE957BB0051B807 /* BXHUDContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXHUDContainerView.swift; sourceTree = "<group>"; };
 		407C557B8DBF747CA7F24E084007E7CD /* PinAuto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PinAuto.modulemap; sourceTree = "<group>"; };
 		40ACBBFA20F77607C153A4CDC561C1C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		4839C2164AF553FE0C799396E0C5343F /* Pods-BXProgressHUD_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BXProgressHUD_Example-resources.sh"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				D2BE59DBD77C79C72FD1848FA2A78FCA /* BXProgressHUDMode.swift */,
 				838BFADC16E0106AB5C53F2770B2F89D /* BXProgressOptions.swift */,
 				B302C39DD87F4F1BE96A34F77055C883 /* BXRoundProgressView.swift */,
+				3E18A9021CE957BB0051B807 /* BXHUDContainerView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E18A9031CE957BB0051B807 /* BXHUDContainerView.swift in Sources */,
 				977048D9738A7471526CBF97D4750FCA /* Base.swift in Sources */,
 				E90B596174257FD49431A2347EE73A57 /* BXBarProgressView.swift in Sources */,
 				B5FEE9A7AD9BF1670AE7336B06495470 /* BXHUD.swift in Sources */,

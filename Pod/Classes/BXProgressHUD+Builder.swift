@@ -14,8 +14,9 @@ public extension BXProgressHUD{
         let hud:BXProgressHUD
         let targetView:UIView
         public init(forView:UIView){
-            hud = BXProgressHUD(view: forView)
+            hud = BXProgressHUD()
             targetView = forView
+            hud.attachTo(targetView)
         }
         
         public convenience init(){
