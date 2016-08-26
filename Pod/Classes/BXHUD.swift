@@ -22,7 +22,8 @@ public struct BXHUD{
     }
     return nil
   }
-  static func showProgress(label:String="") -> BXProgressHUD{
+  
+  public static func showProgress(label:String="") -> BXProgressHUD{
     let hud = globalHUD()
     guard let window = window else{
       return hud
@@ -37,7 +38,7 @@ public struct BXHUD{
     return hud
   }
   
-  static func globalHUD() -> BXProgressHUD{
+  public static func globalHUD() -> BXProgressHUD{
     guard let window = window else{
       // 此 HUD 将不会显示，并且使用之后马上被内存回收，所以没什么坏的影响
       return BXProgressHUD()
@@ -52,7 +53,7 @@ public struct BXHUD{
   }
   
   
-  static func hideSuccess(text:String = ""){
+  public static func hideSuccess(text:String = ""){
     guard let window = window else{
       return
     }
@@ -63,7 +64,7 @@ public struct BXHUD{
     hud.hide(afterDelay: 0.5)
   }
   
-  static func hideProgress(label:String=""){
+  public static func hideProgress(label:String=""){
     guard let window = window else{
       return
     }
@@ -77,7 +78,7 @@ public struct BXHUD{
     }
   }
   
-  static func showToast(label:String){
+  public static func showToast(label:String){
     guard let window = window else{
       return
     }
@@ -90,7 +91,7 @@ public struct BXHUD{
     hud.hide(afterDelay: 1)
   }
   
-  static func showErrorTip(label:String,detail:String=""){
+  public static func showErrorTip(label:String,detail:String=""){
     guard let window = window else{
       return
     }

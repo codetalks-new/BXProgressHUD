@@ -88,9 +88,10 @@ public class BXProgressHUD : UIView {
    * The corner radius for the HUD
    * Defaults to 10.0
    */
-  public var cornerRadius: CGFloat = 0.0{
+  public var cornerRadius: CGFloat = 10{
     didSet{
-      containerView.layer.cornerRadius = cornerRadius
+      containerView.backgroundView.layer.cornerRadius = cornerRadius
+      containerView.backgroundView.clipsToBounds = true
     }
   }
   
@@ -304,7 +305,12 @@ public class BXProgressHUD : UIView {
     
     containerView.backgroundView.effect = UIBlurEffect(style: blurStyle)
     containerView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.layer.cornerRadius = cornerRadius
+    if cornerRadius > 0.1{
+      // see http://stackoverflow.com/questions/29029335/corner-radius-on-uivisualeffectview
+      let blurView = containerView.backgroundView
+      blurView.layer.cornerRadius = cornerRadius
+      blurView.clipsToBounds = true
+    }
     
     addSubview(containerView)
     

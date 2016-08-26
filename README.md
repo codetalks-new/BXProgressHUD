@@ -9,6 +9,16 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+1. you can just simple use like this:
+
+  ```swift
+    let hud = BXHUD.showProgress("Loading")
+    hud.hide(afterDelay: 3)
+  ```
+  see `BXHUD` class for more information
+
+
+
 ## Requirements
 
 ## Installation

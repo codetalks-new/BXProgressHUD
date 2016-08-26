@@ -32,7 +32,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     @IBAction func showWithDetailLabel(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).text("Loading").detailText("Updating data").show()//.hide(afterDelay: 3)
+        BXProgressHUD.Builder(forView: targetView).text("Loading...").detailText("Updating data").mode(.Text).show().hide(afterDelay: 3)
     }
     @IBAction func showWithLabelDeterminate(sender: AnyObject) {
         HUD =  BXProgressHUD.Builder(forView: targetView).mode(.Determinate).text("Loading") .create()
@@ -74,7 +74,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     }
     
     @IBAction func showOnWindow(sender: AnyObject) {
-      BXProgressHUD.Builder(forView: targetView.window!).text("Loading").mode(.Text).show().hide(afterDelay:3)
+      let hud = BXHUD.showProgress("Loading")
+      hud.hide(afterDelay: 3)
     }
    
     
@@ -136,8 +137,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         BXProgressHUD.Builder(forView: targetView).text("Some message...").mode(.Text).show()
     }
     @IBAction func showWithColor(sender: AnyObject) {
-//        let color = UIColor(red: 0.23, green: 0.50, blue: 0.82, alpha: 0.90)
-//        BXProgressHUD.Builder(forView: targetView).color(color).show().hide(afterDelay: 3)
+        let color = UIColor(red: 0.23, green: 0.50, blue: 0.82, alpha: 0.90)
+        BXProgressHUD.Builder(forView: targetView).textColor(color).show().hide(afterDelay: 3)
     }
     
     func hudWasHidden(hud: BXProgressHUD) {
