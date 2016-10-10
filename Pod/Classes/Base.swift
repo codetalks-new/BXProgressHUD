@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class BXBaseProgressView:UIView{
+open class BXBaseProgressView:UIView{
     /**
      * Progress (0.0 to 1.0)
      */
-    public var progress: CGFloat = 0.0{
+    open var progress: CGFloat = 0.0{
         didSet{
             setNeedsDisplay()
         }
@@ -22,13 +22,13 @@ public class BXBaseProgressView:UIView{
      * progress color.
      * Defaults to white [UIColor whiteColor].
      */
-    public var progressColor: UIColor = .whiteColor(){
+    open var progressColor: UIColor = .white{
         didSet{
             setNeedsDisplay()
         }
     }
     
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         return frame.size
     }
 }
@@ -40,15 +40,15 @@ public class BXBaseProgressView:UIView{
 public enum BXProgressHUDAnimation : Int {
     
     /** Opacity animation */
-    case Fade
+    case fade
     /** Opacity + scale animation */
-    case Zoom
+    case zoom
     /** Opacity + scale animation */
     public static var ZoomOut: BXProgressHUDAnimation {
-        return .Zoom
+        return .zoom
     }
     /** Opacity + scale animation */
-    case ZoomIn
+    case zoomIn
 }
 
 public typealias BXProgressHUDCompletionBlock = () -> Void
@@ -58,5 +58,5 @@ public protocol BXProgressHUDDelegate : NSObjectProtocol {
     /**
      * Called after the HUD was fully hidden from the screen.
      */
-    func hudWasHidden(hud:BXProgressHUD)
+    func hudWasHidden(_ hud:BXProgressHUD)
 }

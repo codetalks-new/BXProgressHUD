@@ -13,7 +13,7 @@ import PinAuto
 
 class BXHUDContainerView : UIView{
   let mode : BXHUDMode
-  let backgroundView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+  let backgroundView:UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
   init(mode:BXHUDMode){
     self.mode = mode
     super.init(frame: CGRect.zero)
@@ -37,11 +37,11 @@ class BXHUDContainerView : UIView{
     return []
   }
   
-  private func commonInit(){
+  fileprivate func commonInit(){
     translatesAutoresizingMaskIntoConstraints = false
     
     addSubview(backgroundView)
-    backgroundView.autoresizingMask = [.FlexibleWidth,.FlexibleHeight]
+    backgroundView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
     
     for childView in allOutlets{
       addSubview(childView)
@@ -53,7 +53,7 @@ class BXHUDContainerView : UIView{
     
   }
   
-  class override func requiresConstraintBasedLayout() -> Bool{
+  class override var requiresConstraintBasedLayout : Bool{
     return true
   }
   
@@ -102,10 +102,10 @@ class BXHUDTextContainerView:BXHUDContainerView{
     detailsLabel.pa_centerX.install()
   }
   
-  override func intrinsicContentSize() -> CGSize {
+  override var intrinsicContentSize : CGSize {
     let padding = BXHUDOptions.padding
-    let titleSize = titleLabel.intrinsicContentSize()
-    let detailsSize = detailsLabel.intrinsicContentSize()
+    let titleSize = titleLabel.intrinsicContentSize
+    let detailsSize = detailsLabel.intrinsicContentSize
     
     let width = max(titleSize.width, detailsSize.width) + padding * 2
     let height = padding + titleSize.height + 4 + detailsSize.height + padding
@@ -120,7 +120,7 @@ class BXHUDIndicatorContainerView:BXHUDContainerView{
   let titleLabel : UILabel //= UILabel(frame:CGRectZero)
   
   convenience init(){
-    self.init(mode:BXHUDMode.Indeterminate,indicator: UIActivityIndicatorView(activityIndicatorStyle: .White),titleLabel: UILabel())
+    self.init(mode:BXHUDMode.indeterminate,indicator: UIActivityIndicatorView(activityIndicatorStyle: .white),titleLabel: UILabel())
   }
   
   override var allOutlets :[UIView]{
@@ -146,20 +146,20 @@ class BXHUDIndicatorContainerView:BXHUDContainerView{
     let padding = BXHUDOptions.padding
     indicator.pa_top.eq(padding).install()
     indicator.pa_centerX.install()
-    indicator.setContentHuggingPriority(1000, forAxis: .Horizontal)
+    indicator.setContentHuggingPriority(1000, for: .horizontal)
     
     titleLabel.pa_below(indicator, offset: 8).install()
     titleLabel.pa_bottom.eq(padding).install()
     titleLabel.pa_centerX.install()
     
-    titleLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+    titleLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
     
   }
   
-  override func intrinsicContentSize() -> CGSize {
+  override var intrinsicContentSize : CGSize {
     let padding = BXHUDOptions.padding
-    let titleSize = titleLabel.intrinsicContentSize()
-    let indicatorSize = indicator.intrinsicContentSize()
+    let titleSize = titleLabel.intrinsicContentSize
+    let indicatorSize = indicator.intrinsicContentSize
     
     let width = max(titleSize.width,indicatorSize.width) + padding * 2
     let height = padding + titleSize.height + 8 + indicatorSize.height + padding

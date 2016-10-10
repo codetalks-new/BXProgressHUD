@@ -20,18 +20,18 @@ import PinAuto
  *   indicator view.
  * - If also the detailsLabelText property is set then another label is placed below the first label.
  */
-public class BXProgressHUD : UIView {
+open class BXProgressHUD : UIView {
   /**
    * A block that gets called after the HUD was completely hidden.
    */
-  public var completionBlock: BXProgressHUDCompletionBlock?
+  open var completionBlock: BXProgressHUDCompletionBlock?
   
   /**
    * BXProgressHUD operation mode. The default is BXProgressHUDModeIndeterminate.
    *
    * @see BXProgressHUDMode
    */
-  public var mode: BXProgressHUDMode = .Indeterminate{
+  open var mode: BXProgressHUDMode = .indeterminate{
     didSet{
       if !isIniting{
         shouldUpdateIndicators()
@@ -44,14 +44,14 @@ public class BXProgressHUD : UIView {
    *
    * @see BXProgressHUDAnimation
    */
-  public var animationType: BXProgressHUDAnimation  = .Fade
+  open var animationType: BXProgressHUDAnimation  = .fade
   
   
   /**
    * The UIView (e.g., a UIImageView) to be shown when the HUD is in BXProgressHUDModeCustomView.
    * For best results use a 37 by 37 pixel view (so the bounds match the built in indicator bounds).
    */
-  public var customView: UIView?{
+  open var customView: UIView?{
     didSet{
       shouldUpdateIndicators()
     }
@@ -63,7 +63,7 @@ public class BXProgressHUD : UIView {
    *
    * @see BXProgressHUDDelegate
    */
-  weak public var delegate: BXProgressHUDDelegate?
+  weak open var delegate: BXProgressHUDDelegate?
   
 
 
@@ -71,24 +71,24 @@ public class BXProgressHUD : UIView {
   /**
    * The x-axis offset of the HUD relative to the centre of the superview.
    */
-  public var xOffset: CGFloat = 0.0
+  open var xOffset: CGFloat = 0.0
   
   /**
    * The y-axis offset of the HUD relative to the centre of the superview.
    */
-  public var yOffset: CGFloat = 0.0
+  open var yOffset: CGFloat = 0.0
   
   /**
    * The amount of space between the HUD edge and the HUD elements (labels, indicators or custom views).
    * Defaults to 24.0
    */
-  public var margin: CGFloat = 24.0
+  open var margin: CGFloat = 24.0
   
   /**
    * The corner radius for the HUD
    * Defaults to 10.0
    */
-  public var cornerRadius: CGFloat = 10{
+  open var cornerRadius: CGFloat = 10{
     didSet{
       containerView.backgroundView.layer.cornerRadius = cornerRadius
       containerView.backgroundView.clipsToBounds = true
@@ -98,7 +98,7 @@ public class BXProgressHUD : UIView {
   /**
    * Cover the HUD background view with a radial gradient.
    */
-  public var dimBackground: Bool = false
+  open var dimBackground: Bool = false
   
   /*
   * Grace period is the time (in seconds) that the invoked method may be run without
@@ -109,14 +109,14 @@ public class BXProgressHUD : UIView {
   * Grace time functionality is only supported when the task status is known!
   * @see taskInProgress
   */
-  public var graceTime: NSTimeInterval = 0.0
+  open var graceTime: TimeInterval = 0.0
   
   /**
    * The minimum time (in seconds) that the HUD is shown.
    * This avoids the problem of the HUD being shown and than instantly hidden.
    * Defaults to 0 (no minimum show time).
    */
-  public var minShowTime: NSTimeInterval = 0.0
+  open var minShowTime: TimeInterval = 0.0
   
   /**
    * Indicates that the executed operation is in progress. Needed for correct graceTime operation.
@@ -126,27 +126,27 @@ public class BXProgressHUD : UIView {
    * you need to set this property when your task starts and completes in order to have normal graceTime
    * functionality.
    */
-  public var taskInProgress: Bool = false
+  open var taskInProgress: Bool = false
   
   /**
    * Removes the HUD from its parent view when hidden.
    * Defaults to NO.
    */
-  public var removeFromSuperViewOnHide: Bool = false
+  open var removeFromSuperViewOnHide: Bool = false
   
   
-  public let label :UILabel =  UILabel(frame: CGRectZero)
+  open let label :UILabel =  UILabel(frame: CGRect.zero)
   
-  public let detailsLabel :UILabel =  UILabel(frame: CGRectZero)
+  open let detailsLabel :UILabel =  UILabel(frame: CGRect.zero)
  
-  public var checkmarkImage:UIImage?
+  open var checkmarkImage:UIImage?
  
-  public var padding:CGFloat = 20
+  open var padding:CGFloat = 20
   
 
   
   
-  public var blurStyle : UIBlurEffectStyle = .Dark{
+  open var blurStyle : UIBlurEffectStyle = .dark{
     didSet{
       containerView.backgroundView.effect = UIBlurEffect(style: blurStyle)
     }
@@ -157,7 +157,7 @@ public class BXProgressHUD : UIView {
    * The color of the activity indicator. Defaults to [UIColor whiteColor]
    * Does nothing on pre iOS 5.
    */
-  public var activityIndicatorColor: UIColor = .whiteColor(){
+  open var activityIndicatorColor: UIColor = .white{
     didSet{
       if let activityIndicator = indicator as? UIActivityIndicatorView{
         activityIndicator.color = activityIndicatorColor
@@ -169,7 +169,7 @@ public class BXProgressHUD : UIView {
   /**
    * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0.
    */
-  public var progress: CGFloat = 1.0{
+  open var progress: CGFloat = 1.0{
     didSet{
       if let pg = indicator as? BXBaseProgressView{
         pg.progress = progress
@@ -177,7 +177,7 @@ public class BXProgressHUD : UIView {
     }
   }
   
-  private var indicator:UIView?{
+  fileprivate var indicator:UIView?{
     if let indicatorContainer = containerView as? BXHUDIndicatorContainerView{
       return indicatorContainer.indicator
     }
@@ -187,19 +187,19 @@ public class BXProgressHUD : UIView {
   /**
    * Force the HUD dimensions to be equal if possible.
    */
-  public var square: Bool = false
+  open var square: Bool = false
   
   var useAnimation = false
   
   var isFinished = false
-  var rotationTransform = CGAffineTransformIdentity
+  var rotationTransform = CGAffineTransform.identity
   
-  var showStarted:NSDate?
+  var showStarted:Date?
   
-  private var containerView:BXHUDContainerView = BXHUDIndicatorContainerView()
-  private var isIniting = false
+  fileprivate var containerView:BXHUDContainerView = BXHUDIndicatorContainerView()
+  fileprivate var isIniting = false
   
-  public init(mode:BXHUDMode = BXHUDMode.Indeterminate){
+  public init(mode:BXHUDMode = BXHUDMode.indeterminate){
     isIniting = true
     self.mode = mode
     super.init(frame: CGRect.zero)
@@ -209,14 +209,14 @@ public class BXProgressHUD : UIView {
   }
   
   
-  public func attachTo(view:UIView){
+  open func attachTo(_ view:UIView){
     self.removeFromSuperview()
     frame = view.bounds
     view.addSubview(self)
   }
  
   @nonobjc
-  public func attachTo(window:UIWindow){
+  open func attachTo(_ window:UIWindow){
     self.attachTo(window as UIView)
   }
   
@@ -229,8 +229,8 @@ public class BXProgressHUD : UIView {
   
   func commonInit(){
     // Transparent background
-    backgroundColor = .clearColor()
-    opaque = false
+    backgroundColor = .clear
+    isOpaque = false
     // Make it invisible for now
     alpha = 0.0
     shouldUpdateIndicators()
@@ -245,32 +245,32 @@ public class BXProgressHUD : UIView {
 
 
   
-  func indicatorOfMode(mode:BXHUDMode) -> UIView?{
+  func indicatorOfMode(_ mode:BXHUDMode) -> UIView?{
     switch mode{
-    case .Indeterminate:
-      let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    case .indeterminate:
+      let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
       indicator.color = activityIndicatorColor
       indicator.startAnimating()
       return indicator
-    case .Checkmark:
+    case .checkmark:
       if let image = checkmarkImage{
         return UIImageView(image: image)
       }
       return nil
-    case .DeterminateHorizontalBar:
+    case .determinateHorizontalBar:
       return  BXBarProgressView()
-    case .Determinate,.AnnularDeterminate:
+    case .determinate,.annularDeterminate:
       let indicator = BXRoundProgressView()
-      indicator.annular = mode == .AnnularDeterminate
+      indicator.annular = mode == .annularDeterminate
       return indicator
-    case .CustomView:
+    case .customView:
       return customView
-    case .Text:
+    case .text:
       return nil
     }
   }
   
-  func containerViewOfMode(mode:BXHUDMode) -> BXHUDContainerView{
+  func containerViewOfMode(_ mode:BXHUDMode) -> BXHUDContainerView{
     if let indicator = indicatorOfMode(mode){
       return BXHUDIndicatorContainerView(mode: mode, indicator: indicator, titleLabel: label)
     }else{
@@ -282,19 +282,19 @@ public class BXProgressHUD : UIView {
   func setupAttrs(){
 //    containerView.layer.cornerRadius = cornerRadius
     
-    label.textColor = .whiteColor()
-    label.font = UIFont.boldSystemFontOfSize(BXProgressOptions.labelFontSize)
+    label.textColor = .white
+    label.font = UIFont.boldSystemFont(ofSize: BXProgressOptions.labelFontSize)
     
-    detailsLabel.textColor = .whiteColor()
+    detailsLabel.textColor = .white
     detailsLabel.numberOfLines = 1
-    detailsLabel.font = UIFont.boldSystemFontOfSize(BXProgressOptions.detailsLabelFontSize)
+    detailsLabel.font = UIFont.boldSystemFont(ofSize: BXProgressOptions.detailsLabelFontSize)
     
     
     for l in [label,detailsLabel]{
       l.adjustsFontSizeToFitWidth = false
-      l.textAlignment = .Center
-      l.opaque = false
-      l.backgroundColor = .clearColor()
+      l.textAlignment = .center
+      l.isOpaque = false
+      l.backgroundColor = .clear
     }
     
   }
@@ -323,8 +323,8 @@ public class BXProgressHUD : UIView {
     containerView.pa_centerY.offset(yOffset).install()
   }
   
-  public override func willMoveToSuperview(newSuperview: UIView?) {
-    super.willMoveToSuperview(newSuperview)
+  open override func willMove(toSuperview newSuperview: UIView?) {
+    super.willMove(toSuperview: newSuperview)
     #if DEBUG
       NSLog("\(#function)")
     #endif
@@ -334,18 +334,18 @@ public class BXProgressHUD : UIView {
   }
   
  
-  func imageByName(name:String) -> UIImage?{
-    let bundleOfThis = NSBundle(forClass: BXProgressHUD.self)
-    guard let bundleURL = bundleOfThis.URLForResource("BXProgressHUD", withExtension: "bundle") else{
+  func imageByName(_ name:String) -> UIImage?{
+    let bundleOfThis = Bundle(for: BXProgressHUD.self)
+    guard let bundleURL = bundleOfThis.url(forResource: "BXProgressHUD", withExtension: "bundle") else{
       NSLog("Resources bundle not found")
       return nil
     }
     
-    guard let bundle = NSBundle(URL: bundleURL) else{
+    guard let bundle = Bundle(url: bundleURL) else{
       NSLog("Could not load Resources Bundle \(bundleURL)")
       return nil
     }
-    if let imagePath = bundle.pathForResource(name, ofType: "png"){
+    if let imagePath = bundle.path(forResource: name, ofType: "png"){
       return UIImage(contentsOfFile: imagePath)
     }else{
       return nil
@@ -354,7 +354,7 @@ public class BXProgressHUD : UIView {
   }
   
   deinit{
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+    NotificationCenter.default.removeObserver(self)
   }
   
   
@@ -373,19 +373,19 @@ extension BXProgressHUD{
 
 extension BXProgressHUD{
   
-  public static func showHUDAddedTo(view:UIView, animated:Bool = true) -> BXProgressHUD{
-    let hud = BXProgressHUD(mode: BXHUDMode.Indeterminate)
+  public static func showHUDAddedTo(_ view:UIView, animated:Bool = true) -> BXProgressHUD{
+    let hud = BXProgressHUD(mode: BXHUDMode.indeterminate)
     hud.removeFromSuperViewOnHide = true
     view.addSubview(hud)
     hud.show(animated)
     return hud
   }
   
-  public static func HUDForView(view:UIView) -> BXProgressHUD? {
-    return view.subviews.reverse().filter{ $0 is BXProgressHUD }.first as? BXProgressHUD
+  public static func HUDForView(_ view:UIView) -> BXProgressHUD? {
+    return view.subviews.reversed().filter{ $0 is BXProgressHUD }.first as? BXProgressHUD
   }
   
-  public static func allHUDsForView(view:UIView) -> [BXProgressHUD]{
+  public static func allHUDsForView(_ view:UIView) -> [BXProgressHUD]{
     var huds = [BXProgressHUD]()
     view.subviews.forEach{ subview in
       if let hud = subview as? BXProgressHUD{
@@ -395,7 +395,7 @@ extension BXProgressHUD{
     return huds
   }
   
-  public static func hideHUDForView(view:UIView,animated:Bool = true) -> Bool{
+  public static func hideHUDForView(_ view:UIView,animated:Bool = true) -> Bool{
     if let hud = HUDForView(view){
       hud.removeFromSuperViewOnHide = true
       hud.hide()
@@ -405,7 +405,7 @@ extension BXProgressHUD{
     }
   }
   
-  public static func hideAllHUDsForView(view:UIView, animated:Bool = true) -> Int {
+  public static func hideAllHUDsForView(_ view:UIView, animated:Bool = true) -> Int {
     let huds = allHUDsForView(view)
     huds.forEach{ hud in
       hud.removeFromSuperViewOnHide = true
@@ -417,15 +417,15 @@ extension BXProgressHUD{
 
 extension BXProgressHUD{
   // MARK: Thread  block
-  public func showAnimated(animated:Bool,
-    whileExecutingBlock block:dispatch_block_t,
-    onQueue queue:dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0),
+  public func showAnimated(_ animated:Bool,
+    whileExecutingBlock block:@escaping ()->(),
+    onQueue queue:DispatchQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default),
     completionBlock completion:BXProgressHUDCompletionBlock? = nil){
       taskInProgress = true
       completionBlock = completion
-      dispatch_async(queue){
+      queue.async{
         block()
-        dispatch_async(dispatch_get_main_queue()){
+        DispatchQueue.main.async{
           self.hide(animated)
           self.completionBlock = nil
         }
@@ -433,24 +433,24 @@ extension BXProgressHUD{
       self.show(animated)
   }
   
-  func delay(delay:NSTimeInterval,closure:()-> Void){
-    let when = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * NSTimeInterval(NSEC_PER_SEC)))
-    dispatch_after(when , dispatch_get_main_queue() , closure)
+  func delay(_ delay:TimeInterval,closure:@escaping ()-> Void){
+    let when = DispatchTime.now() + Double(Int64(delay * TimeInterval(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: when , execute: closure)
   }
 }
 
 extension BXProgressHUD{
   
   func registerForNotifications() {
-    let notificationCenter = NSNotificationCenter.defaultCenter()
-    notificationCenter.addObserverForName(UIApplicationDidChangeStatusBarOrientationNotification, object: nil, queue: nil) { (notif) -> Void in
+    let notificationCenter = NotificationCenter.default
+    notificationCenter.addObserver(forName: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil, queue: nil) { (notif) -> Void in
       if self.superview != nil{
         self.updateForCurrentOrientationAnimated()
       }
     }
   }
   
-  func updateForCurrentOrientationAnimated(animated:Bool = true){
+  func updateForCurrentOrientationAnimated(_ animated:Bool = true){
     if let superview = self.superview{
       bounds = superview.bounds
     }
@@ -458,7 +458,7 @@ extension BXProgressHUD{
 }
 
 extension BXProgressHUD{
-  public override func didMoveToSuperview() {
+  open override func didMoveToSuperview() {
     super.didMoveToSuperview()
     updateForCurrentOrientationAnimated(false)
   }
@@ -471,7 +471,7 @@ extension BXProgressHUD{
   
   // MARK: Show & hide
   
-  public func show(animated:Bool = true){
+  public func show(_ animated:Bool = true){
     useAnimation = animated
     if graceTime > 0.0{
       delay(graceTime){
@@ -485,12 +485,12 @@ extension BXProgressHUD{
     }
   }
   
-  public func hide(animated:Bool = true){
+  public func hide(_ animated:Bool = true){
     useAnimation = animated
     // If the minShow time is set, calculate how long the hud shown
     // and pospone the hiding operation if necessary
-    if let started = showStarted where minShowTime > 0.0{
-      let interval = NSDate().timeIntervalSinceDate(started)
+    if let started = showStarted , minShowTime > 0.0{
+      let interval = Date().timeIntervalSince(started)
       if interval < minShowTime{
         delay(minShowTime - interval){
           if self.taskInProgress{
@@ -505,7 +505,7 @@ extension BXProgressHUD{
     }
   }
   
-  public func hide(animated:Bool = true,afterDelay seconds:NSTimeInterval){
+  public func hide(_ animated:Bool = true,afterDelay seconds:TimeInterval){
     delay(seconds){
       self.hide(animated)
     }
@@ -515,24 +515,24 @@ extension BXProgressHUD{
   
   // MARK: Internal show & hide operations
   
-  func showUsingAnimation(animated:Bool){
+  func showUsingAnimation(_ animated:Bool){
     // Cancel any scheduled hideDeplayed: calls
-    NSObject.cancelPreviousPerformRequestsWithTarget(self)
+    NSObject.cancelPreviousPerformRequests(withTarget: self)
     setNeedsDisplay()
     if animated{
-      if animationType == .ZoomIn{
-        transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5, 0.5))
+      if animationType == .zoomIn{
+        transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
       }else if animationType == .ZoomOut{
-        transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5, 1.5))
+        transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 1.5, y: 1.5))
       }
     }
-    showStarted = NSDate()
+    showStarted = Date()
     
     if animated{
       UIView.beginAnimations(nil, context: nil)
       UIView.setAnimationDuration(0.3)
       self.alpha = 1.0
-      if animationType == .ZoomIn || animationType == .ZoomOut{
+      if animationType == .zoomIn || animationType == .ZoomOut{
         self.transform = rotationTransform
       }
       UIView.commitAnimations()
@@ -542,15 +542,15 @@ extension BXProgressHUD{
     
   }
   
-  func hideUsingAnimation(animated:Bool){
+  func hideUsingAnimation(_ animated:Bool){
     if animated && showStarted != nil{
-      UIView.animateWithDuration(0.3, animations: {
+      UIView.animate(withDuration: 0.3, animations: {
         self.alpha = 0.02
         // 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden in the done method
-        if self.animationType == .ZoomIn{
-          self.transform = CGAffineTransformConcat(self.rotationTransform,CGAffineTransformMakeScale(1.5, 1.5))
+        if self.animationType == .zoomIn{
+          self.transform = self.rotationTransform.concatenating(CGAffineTransform(scaleX: 1.5, y: 1.5))
         }else if self.animationType == .ZoomOut{
-          self.transform = CGAffineTransformConcat(self.rotationTransform,CGAffineTransformMakeScale(0.5, 0.5))
+          self.transform = self.rotationTransform.concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
         }
         
         }, completion: { (finished) -> Void in
@@ -566,7 +566,7 @@ extension BXProgressHUD{
   }
   
   func done(){
-    NSObject.cancelPreviousPerformRequestsWithTarget(self)
+    NSObject.cancelPreviousPerformRequests(withTarget: self)
     isFinished = true
     alpha =  0.0
     setNeedsDisplay()

@@ -16,24 +16,24 @@ public protocol BXResult{
 public struct BXHUD{
   public static var errorColor : UIColor = UIColor(red: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
   
-  private static var window:UIWindow?{
-    if let win =  UIApplication.sharedApplication().delegate?.window{
+  fileprivate static var window:UIWindow?{
+    if let win =  UIApplication.shared.delegate?.window{
       return win
     }
     return nil
   }
   
-  public static func showProgress(label:String="") -> BXProgressHUD{
+  public static func showProgress(_ label:String="") -> BXProgressHUD{
     let hud = globalHUD()
     guard let window = window else{
       return hud
     }
-    window.bringSubviewToFront(hud)
+    window.bringSubview(toFront: hud)
     hud.label.text = label
-    hud.label.textColor = .whiteColor()
+    hud.label.textColor = .white
     hud.graceTime = 0
     hud.removeFromSuperViewOnHide = false
-    hud.mode = .Indeterminate
+    hud.mode = .indeterminate
     hud.show(false)
     return hud
   }
@@ -53,23 +53,23 @@ public struct BXHUD{
   }
   
   
-  public static func hideSuccess(text:String = ""){
+  public static func hideSuccess(_ text:String = ""){
     guard let window = window else{
       return
     }
     let hud = globalHUD()
-    window.bringSubviewToFront(hud)
+    window.bringSubview(toFront: hud)
     hud.label.text = text
-    hud.mode = .Checkmark
+    hud.mode = .checkmark
     hud.hide(afterDelay: 0.5)
   }
   
-  public static func hideProgress(label:String=""){
+  public static func hideProgress(_ label:String=""){
     guard let window = window else{
       return
     }
     let hud = globalHUD()
-    window.bringSubviewToFront(hud)
+    window.bringSubview(toFront: hud)
     if !label.isEmpty{
       hud.label.text = label
       hud.hide(afterDelay: 1.5)
@@ -78,26 +78,26 @@ public struct BXHUD{
     }
   }
   
-  public static func showToast(label:String){
+  public static func showToast(_ label:String){
     guard let window = window else{
       return
     }
     let hud = globalHUD()
-    window.bringSubviewToFront(hud)
+    window.bringSubview(toFront: hud)
     hud.label.text = label
-    hud.mode = .Text
+    hud.mode = .text
     hud.graceTime = 0
     hud.show()
     hud.hide(afterDelay: 1)
   }
   
-  public static func showErrorTip(label:String,detail:String=""){
+  public static func showErrorTip(_ label:String,detail:String=""){
     guard let window = window else{
       return
     }
     let hud = globalHUD()
-    window.bringSubviewToFront(hud)
-    hud.mode = .Text
+    window.bringSubview(toFront: hud)
+    hud.mode = .text
     hud.graceTime = 0
     hud.label.textColor = errorColor
     hud.label.text = label

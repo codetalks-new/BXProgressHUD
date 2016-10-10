@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXProgressHUD"
-  s.version          = "1.8.0"
-  s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 2.1 with some new feature"
+  s.version          = "2.0"
+  s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 3.0 with some new feature"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -35,6 +35,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes/**/*'
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit' #, 'MapKit'
-  s.dependency 'PinAuto'
+  s.dependency 'PinAuto', '~> 2.0'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

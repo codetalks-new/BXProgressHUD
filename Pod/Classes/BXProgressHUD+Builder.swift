@@ -10,7 +10,7 @@ import Foundation
 
 public extension BXProgressHUD{
     
-    public class Builder {
+    open class Builder {
         let hud:BXProgressHUD
         let targetView:UIView
         public init(forView:UIView){
@@ -19,105 +19,105 @@ public extension BXProgressHUD{
         }
         
         public convenience init(){
-            let window = UIApplication.sharedApplication().keyWindow!
+            let window = UIApplication.shared.keyWindow!
             self.init(forView:window)
         }
         
-        public func mode(mode:BXProgressHUDMode) -> Self{
+        open func mode(_ mode:BXProgressHUDMode) -> Self{
             hud.mode = mode
             return self
         }
         
-        public func usingTextMode() -> Self{
-           return mode(.Text)
+        open func usingTextMode() -> Self{
+           return mode(.text)
         }
         
-        public func animationType(type:BXProgressHUDAnimation) -> Self{
+        open func animationType(_ type:BXProgressHUDAnimation) -> Self{
             hud.animationType = type
             return self
         }
         
-        public func dimBackground(dimBackground:Bool) -> Self{
+        open func dimBackground(_ dimBackground:Bool) -> Self{
             hud.dimBackground = dimBackground
             return self
         }
         
         
-        public func text(text:String) -> Self{
+        open func text(_ text:String) -> Self{
             hud.label.text = text
             return self
         }
         
-        public func textColor(color:UIColor) -> Self{
+        open func textColor(_ color:UIColor) -> Self{
             hud.label.textColor = color
             return self
         }
         
-        public func detailText(text:String) -> Self{
+        open func detailText(_ text:String) -> Self{
             hud.detailsLabel.text = text
             return self
         }
         
-        public func detailColor(color:UIColor) -> Self{
+        open func detailColor(_ color:UIColor) -> Self{
             hud.detailsLabel.textColor = color
             return self
         }
         
         
-        public func customView(view:UIView) -> Self{
+        open func customView(_ view:UIView) -> Self{
             hud.customView = view
             return self
         }
         
         
-        public func removeFromSuperViewOnHide(remove:Bool) -> Self{
+        open func removeFromSuperViewOnHide(_ remove:Bool) -> Self{
             hud.removeFromSuperViewOnHide = remove
             return self
         }
         
         
-        public func margin(margin:CGFloat) -> Self{
+        open func margin(_ margin:CGFloat) -> Self{
             hud.margin = margin
             return self
         }
         
-        public func cornerRadius(radius:CGFloat) -> Self{
+        open func cornerRadius(_ radius:CGFloat) -> Self{
             hud.cornerRadius = radius
             return self
         }
         
-        public func xOffset(offset:CGFloat) -> Self{
+        open func xOffset(_ offset:CGFloat) -> Self{
             hud.xOffset = offset
             return self
         }
         
         
-        public func yOffset(offset:CGFloat) -> Self{
+        open func yOffset(_ offset:CGFloat) -> Self{
             hud.yOffset = offset
             return self
         }
         
-        public func graceTime(time:NSTimeInterval) -> Self{
+        open func graceTime(_ time:TimeInterval) -> Self{
             hud.graceTime = time
             return self
         }
         
-        public func minShowTime(time:NSTimeInterval) -> Self{
+        open func minShowTime(_ time:TimeInterval) -> Self{
             hud.minShowTime = time
             return self
         }
         
-        public func show(animated:Bool = true) -> BXProgressHUD{
+        open func show(_ animated:Bool = true) -> BXProgressHUD{
             create().show(animated)
             return hud
         }
         
-        public func create() -> BXProgressHUD{
+        open func create() -> BXProgressHUD{
             hud.attachTo(targetView)
             return hud
         }
         
-        public func delegate(delegate:BXProgressHUDDelegate?) -> Self{
+        open func delegate(_ delegate:BXProgressHUDDelegate?) -> Self{
             hud.delegate = delegate
             return self
         }

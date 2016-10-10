@@ -14,7 +14,7 @@ extension UIView{
     assert(superview != nil, "NO SUPERVIEW")
   }
   
-  internal func assertIsSibling(sibling:UIView){
+  internal func assertIsSibling(_ sibling:UIView){
     assert(superview != nil, "NO SUPERVIEW")
     assert(superview == sibling.superview, "NOT SIBLING")
   }

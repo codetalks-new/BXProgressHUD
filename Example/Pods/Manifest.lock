@@ -1,7 +1,7 @@
 PODS:
-  - BXProgressHUD (1.5.0):
-    - PinAuto
-  - PinAuto (1.6)
+  - BXProgressHUD (2.0):
+    - PinAuto (~> 2.0)
+  - PinAuto (2.0)
   - Reveal-iOS-SDK (1.6.2)
 
 DEPENDENCIES:
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BXProgressHUD: 1492401c39297036fd98eaf0ddb907618e3cb81e
-  PinAuto: 3fea106a06036fedf49928e65a1bced151c02f8a
+  BXProgressHUD: b206b6e09e90c49eb390a68cc6d427bddaf80e87
+  PinAuto: c17b09abc2710d60f523f397890bca0572d489e3
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
 
 PODFILE CHECKSUM: c67995c15ed3bbac25e4092a352c6362a4001a14
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.rc.2

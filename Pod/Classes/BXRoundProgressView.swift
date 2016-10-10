@@ -11,12 +11,12 @@ import UIKit
 /**
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
-public class BXRoundProgressView : BXBaseProgressView{
+open class BXRoundProgressView : BXBaseProgressView{
     /**
      * Indicator background (non-progress) color.
      * Defaults to translucent white (alpha 0.1)
      */
-    public var backgroundTintColor: UIColor = UIColor(white: 1.0, alpha: 0.1){
+    open var backgroundTintColor: UIColor = UIColor(white: 1.0, alpha: 0.1){
         didSet{
             setNeedsDisplay()
         }
@@ -25,7 +25,7 @@ public class BXRoundProgressView : BXBaseProgressView{
     /*
     * Display mode - NO = round or YES = annular. Defaults to round.
     */
-    public var annular: Bool = false{
+    open var annular: Bool = false{
         didSet{
             setNeedsDisplay()
         }
@@ -36,16 +36,16 @@ public class BXRoundProgressView : BXBaseProgressView{
     }
     
     public convenience init(size:CGFloat){
-        self.init(frame:CGRect(origin: CGPointZero, size: CGSize(width: size, height: size)))
+        self.init(frame:CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size)))
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clearColor()
-        opaque = false
+        backgroundColor = .clear
+        isOpaque = false
     }
   
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
       let size =  BXProgressOptions.annularSize
       return CGSize(width: size, height: size)
     }
@@ -56,8 +56,8 @@ public class BXRoundProgressView : BXBaseProgressView{
     }
     
     
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         let allRect = bounds
         let lineWidth = BXProgressOptions.lineWidth
         let circleRect = allRect.insetBy(dx: lineWidth , dy: lineWidth)
@@ -70,20 +70,20 @@ public class BXRoundProgressView : BXBaseProgressView{
             // Draw background
             let processBackgroundPath = UIBezierPath()
             processBackgroundPath.lineWidth = lineWidth
-            processBackgroundPath.lineCapStyle = .Butt
+            processBackgroundPath.lineCapStyle = .butt
             
             let radius = (bounds.width - lineWidth) * 0.5
             let endAngle = CGFloat( M_PI  * 2 ) + startAngle
-            processBackgroundPath.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             backgroundTintColor.set()
             processBackgroundPath.stroke()
             
             // Draw progress
             let processPath = UIBezierPath()
             processPath.lineWidth = lineWidth
-            processPath.lineCapStyle = .Square
+            processPath.lineCapStyle = .square
             let endAngle2 = self.progress * 2 * CGFloat(M_PI) + startAngle
-            processPath.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
+            processPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
             progressColor.set()
             processPath.stroke()
             
@@ -92,7 +92,7 @@ public class BXRoundProgressView : BXBaseProgressView{
             progressColor.setStroke()
             backgroundTintColor.setFill()
             
-            let circlePath = UIBezierPath(ovalInRect: circleRect)
+            let circlePath = UIBezierPath(ovalIn: circleRect)
             circlePath.lineWidth = lineWidth
             circlePath.stroke()
             circlePath.fill()
@@ -102,9 +102,9 @@ public class BXRoundProgressView : BXBaseProgressView{
             let radius = (bounds.width - lineWidth - 2) * 0.5
             let endAngle2 = self.progress * 2 * CGFloat(M_PI) + startAngle
             let path = UIBezierPath()
-            path.moveToPoint(center)
-            path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
-            path.closePath()
+            path.move(to: center)
+            path.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
+            path.close()
             path.fill()
             
         }

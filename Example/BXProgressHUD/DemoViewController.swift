@@ -24,47 +24,47 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         return self.view.superview!
     }
 
-    @IBAction func showSimple(sender: AnyObject) {
+    @IBAction func showSimple(_ sender: AnyObject) {
         BXProgressHUD.showHUDAddedTo(targetView).hide(afterDelay: 3)
     }
-    @IBAction func showWithLabel(sender: AnyObject) {
+    @IBAction func showWithLabel(_ sender: AnyObject) {
         BXProgressHUD.Builder(forView: targetView).text("Loading").show().hide(afterDelay: 3)
     }
     
-    @IBAction func showWithDetailLabel(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).text("Loading...").detailText("Updating data").mode(.Text).show().hide(afterDelay: 3)
+    @IBAction func showWithDetailLabel(_ sender: AnyObject) {
+        BXProgressHUD.Builder(forView: targetView).text("Loading...").detailText("Updating data").mode(.text).show().hide(afterDelay: 3)
     }
-    @IBAction func showWithLabelDeterminate(sender: AnyObject) {
-        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.Determinate).text("Loading") .create()
+    @IBAction func showWithLabelDeterminate(_ sender: AnyObject) {
+        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.determinate).text("Loading") .create()
         HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
-    @IBAction func showWithLabelAnnularDeterminate(sender: AnyObject) {
-        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.AnnularDeterminate).text("Loading") .create()
+    @IBAction func showWithLabelAnnularDeterminate(_ sender: AnyObject) {
+        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.annularDeterminate).text("Loading") .create()
         HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
-    @IBAction func showWithLabelDeterminateHorizontalBar(sender: AnyObject) {
-        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.DeterminateHorizontalBar).text("Loading") .create()
+    @IBAction func showWithLabelDeterminateHorizontalBar(_ sender: AnyObject) {
+        HUD =  BXProgressHUD.Builder(forView: targetView).mode(.determinateHorizontalBar).text("Loading") .create()
         HUD?.showAnimated(true, whileExecutingBlock: myProgressTask())
     }
     
-    @IBAction func showCheckmark(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).mode(.Checkmark).text("A Builtin Checkmark").show()
+    @IBAction func showCheckmark(_ sender: AnyObject) {
+        BXProgressHUD.Builder(forView: targetView).mode(.checkmark).text("A Builtin Checkmark").show()
     }
     
     
-    @IBAction func showWithCustomView(sender: AnyObject) {
+    @IBAction func showWithCustomView(_ sender: AnyObject) {
         let checkmarkView = UIImageView(image: UIImage(named: "checkmark"))
-        let hud = BXProgressHUD.Builder(forView: targetView).mode(.CustomView).customView(checkmarkView).text("Completed")
+        let hud = BXProgressHUD.Builder(forView: targetView).mode(.customView).customView(checkmarkView).text("Completed")
           hud.show() //.hide(afterDelay: 3)
     }
     
     
-    @IBAction func showWithLabelMixed(sender: AnyObject) {
+    @IBAction func showWithLabelMixed(_ sender: AnyObject) {
         HUD =  BXProgressHUD.Builder(forView: targetView).text("Connecting").create()
         HUD?.showAnimated(true, whileExecutingBlock: myMixedTask())
     }
     
-    @IBAction func showWithUsingBlocks(sender: AnyObject) {
+    @IBAction func showWithUsingBlocks(_ sender: AnyObject) {
         let hud = BXProgressHUD.Builder(forView: targetView).text("With a Block").create()
         hud.showAnimated(true, whileExecutingBlock:{
              self.myTaskBlock()
@@ -73,14 +73,14 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         })
     }
     
-    @IBAction func showOnWindow(sender: AnyObject) {
+    @IBAction func showOnWindow(_ sender: AnyObject) {
       let hud = BXHUD.showProgress("Loading")
       hud.hide(afterDelay: 3)
     }
    
     
-    @IBAction func showURL(sender: AnyObject) {
-        class SessionDelegate:NSObject,NSURLSessionDataDelegate {
+    @IBAction func showURL(_ sender: AnyObject) {
+        class SessionDelegate:NSObject,URLSessionDataDelegate {
             let hud:BXProgressHUD
             var expectedLength:Int64 = 0
             var currentLength:Int64 = 0
@@ -89,18 +89,18 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             }
             
             @objc
-            func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+            func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
                 runInUiThread{
-                    self.hud.mode = .Determinate
+                    self.hud.mode = .determinate
                 }
                 expectedLength = max(1,response.expectedContentLength)
                 currentLength = 0
-                completionHandler(.Allow)
+                completionHandler(.allow)
             }
             
             @objc
-            func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
-                currentLength += data.length
+            func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+                currentLength += data.count
                 let progress = (CGFloat(currentLength) / CGFloat(expectedLength))
                 runInUiThread{
                     self.hud.progress  = progress
@@ -108,20 +108,20 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             }
             
             @objc
-            func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+            func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
                 runInUiThread{
                     self.hud.customView = UIImageView(image: UIImage(named: "checkmark"))
-                    self.hud.mode = .CustomView
+                    self.hud.mode = .customView
                     self.hud.hide(afterDelay: 2)
                 }
             }
         }
         
-        let URL = NSURL(string: "https://httpbin.org/gzip")!
+        let URL = Foundation.URL(string: "https://httpbin.org/gzip")!
         let hud = BXProgressHUD.Builder(forView: targetView).text("Lading").detailText(URL.absoluteString) .show()
         let delegate = SessionDelegate(hud: hud)
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: delegate, delegateQueue: nil)
-        let loadTask = session.dataTaskWithURL(URL)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: delegate, delegateQueue: nil)
+        let loadTask = session.dataTask(with: URL)
         loadTask.resume()
     }
     
@@ -130,29 +130,29 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
     
 
     
-    @IBAction func showWithGradient(sender: AnyObject) {
+    @IBAction func showWithGradient(_ sender: AnyObject) {
         BXProgressHUD.Builder(forView: targetView).dimBackground(true).show().hide(afterDelay: 3)
     }
-    @IBAction func showTextOnly(sender: AnyObject) {
-        BXProgressHUD.Builder(forView: targetView).text("Some message...").mode(.Text).show()
+    @IBAction func showTextOnly(_ sender: AnyObject) {
+        BXProgressHUD.Builder(forView: targetView).text("Some message...").mode(.text).show()
     }
-    @IBAction func showWithColor(sender: AnyObject) {
+    @IBAction func showWithColor(_ sender: AnyObject) {
         let color = UIColor(red: 0.23, green: 0.50, blue: 0.82, alpha: 0.90)
         BXProgressHUD.Builder(forView: targetView).textColor(color).show().hide(afterDelay: 3)
     }
     
-    func hudWasHidden(hud: BXProgressHUD) {
+    func hudWasHidden(_ hud: BXProgressHUD) {
         hud.removeFromSuperview()
     }
     
 
 
-    var myTaskBlock:dispatch_block_t = {
+    var myTaskBlock:()->() = {
         sleep(3)
     }
    
     var HUD:BXProgressHUD?
-    func myProgressTask() -> dispatch_block_t{
+    func myProgressTask() -> ()->(){
         return {
             var progress = 0.0
             while progress < 1.0 {
@@ -167,7 +167,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
         }
     }
     
-    func myMixedTask() -> dispatch_block_t{
+    func myMixedTask() -> ()->(){
         return {
             guard let hud = self.HUD else{
                 return
@@ -175,7 +175,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             // Indeterminate
             sleep(2)
             runInUiThread{
-                hud.mode = .Determinate
+                hud.mode = .determinate
                 hud.label.text = "Progress"
             }
             var progress = 0.0
@@ -189,7 +189,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             }
             // Back to indeterminate mode
             runInUiThread{
-                hud.mode = .Indeterminate
+                hud.mode = .indeterminate
                 hud.label.text = "Cleaning up"
             }
             sleep(2)
@@ -198,7 +198,7 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
             runInUiThread{
                 let checkmarkView = UIImageView(image: UIImage(named: "checkmark"))
                 hud.customView = checkmarkView
-                hud.mode = .CustomView
+                hud.mode = .customView
                 hud.label.text = "Completed"
             }
             sleep(2)
@@ -207,8 +207,8 @@ class DemoViewController: UITableViewController,BXProgressHUDDelegate{
 
 }
 
-func runInUiThread(block:dispatch_block_t){
-    dispatch_async(dispatch_get_main_queue(), block)
+func runInUiThread(_ block:@escaping ()->()){
+    DispatchQueue.main.async(execute: block)
 }
 
 

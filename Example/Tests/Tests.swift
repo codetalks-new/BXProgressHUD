@@ -9,7 +9,7 @@ class Tests: XCTestCase {
     override func setUp() {
         super.setUp()
         view = UIView()
-        view?.bounds = UIScreen.mainScreen().bounds
+        view?.bounds = UIScreen.main.bounds
         hud = BXProgressHUD.Builder(forView: view!).show()
     }
     

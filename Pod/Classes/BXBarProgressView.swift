@@ -12,12 +12,12 @@ import UIKit
 /**
  * A flat bar progress view.
  */
-public class BXBarProgressView: BXBaseProgressView{
+open class BXBarProgressView: BXBaseProgressView{
     /**
      * Bar border line color.
      * Defaults to white [UIColor whiteColor].
      */
-    public var lineColor: UIColor = .whiteColor(){
+    open var lineColor: UIColor = .white{
         didSet{
             setNeedsDisplay()
         }
@@ -27,7 +27,7 @@ public class BXBarProgressView: BXBaseProgressView{
      * Bar background color.
      * Defaults to clear [UIColor clearColor];
      */
-    public var progressRemainingColor: UIColor = .clearColor(){
+    open var progressRemainingColor: UIColor = .clear{
         didSet{
             setNeedsDisplay()
         }
@@ -39,29 +39,29 @@ public class BXBarProgressView: BXBaseProgressView{
     }
     
     public convenience init(size:CGSize){
-        self.init(frame:CGRect(origin: CGPointZero, size: size))
+        self.init(frame:CGRect(origin: CGPoint.zero, size: size))
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clearColor()
-        opaque = false
+        backgroundColor = .clear
+        isOpaque = false
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
   
-  public override func intrinsicContentSize() -> CGSize {
+  open override var intrinsicContentSize : CGSize {
     return BXProgressOptions.barSize
   }
     
     
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         let ctx = UIGraphicsGetCurrentContext()
         let lineWidth = BXProgressOptions.lineWidth
-        CGContextSetLineWidth(ctx, lineWidth)
+        ctx?.setLineWidth(lineWidth)
         lineColor.setStroke()
         progressRemainingColor.setFill()
         // Draw background
@@ -87,8 +87,8 @@ public class BXBarProgressView: BXBaseProgressView{
         }
         let dx = roundedRect.width * progress
         if isInMiddleArea{
-            let progressRoundedRect =   roundedRect.divide(dx, fromEdge: CGRectEdge.MinXEdge).slice
-            let roundingCorners :UIRectCorner = [.TopLeft,.BottomLeft]
+            let progressRoundedRect =   roundedRect.divided(atDistance: dx, from: CGRectEdge.minXEdge).slice
+            let roundingCorners :UIRectCorner = [.topLeft,.bottomLeft]
             let progressPath = UIBezierPath(roundedRect: progressRoundedRect, byRoundingCorners: roundingCorners, cornerRadii: CGSize(width: pradius, height: pradius))
             progressPath.lineWidth = lineWidth
             progressPath.fill()
@@ -103,15 +103,15 @@ public class BXBarProgressView: BXBaseProgressView{
             let endAngle =  2 * CGFloat(M_PI) - startAngle
             
             let path = UIBezierPath()
-            path.moveToPoint(startPoint)
-            path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-            path.closePath()
+            path.move(to: startPoint)
+            path.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            path.close()
             path.fill()
             
             
         }else if !isBeforeRightCorner {
-            let progressRoundedRect =   roundedRect.divide(radius, fromEdge: CGRectEdge.MaxXEdge).remainder
-            let roundingCorners :UIRectCorner = [.TopLeft,.BottomLeft]
+            let progressRoundedRect =   roundedRect.divided(atDistance: radius, from: CGRectEdge.maxXEdge).remainder
+            let roundingCorners :UIRectCorner = [.topLeft,.bottomLeft]
             let progressPath = UIBezierPath(roundedRect: progressRoundedRect, byRoundingCorners: roundingCorners, cornerRadii: CGSize(width: pradius, height: pradius))
             progressPath.lineWidth = lineWidth
             progressPath.fill()
@@ -123,16 +123,16 @@ public class BXBarProgressView: BXBaseProgressView{
             let reminderPath = UIBezierPath()
             let startPoint = CGPoint(x: amount, y: startY)
             let center = CGPoint(x: arcStartX, y:roundedRect.midY)
-            reminderPath.moveToPoint(startPoint)
-            reminderPath.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-            reminderPath.closePath()
+            reminderPath.move(to: startPoint)
+            reminderPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            reminderPath.close()
             //            reminderPath.fill()
             
             let rightArcPath = UIBezierPath()
-            rightArcPath.moveToPoint(CGPoint(x: arcStartX, y: roundedRect.maxY))
-            rightArcPath.addArcWithCenter(center, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat( M_PI * 2 - M_PI_2), clockwise: false)
-            rightArcPath.closePath()
-            rightArcPath.appendPath(reminderPath)
+            rightArcPath.move(to: CGPoint(x: arcStartX, y: roundedRect.maxY))
+            rightArcPath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat( M_PI * 2 - M_PI_2), clockwise: false)
+            rightArcPath.close()
+            rightArcPath.append(reminderPath)
             rightArcPath.usesEvenOddFillRule = true
             
             rightArcPath.fill()

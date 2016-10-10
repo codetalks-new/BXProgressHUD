@@ -11,32 +11,32 @@ import Foundation
 public enum BXProgressHUDMode : Int {
   
   /** Progress is shown using an UIActivityIndicatorView. This is the default. */
-  case Indeterminate
+  case indeterminate
   /** Progress is shown using a round, pie-chart like, progress view. */
-  case Determinate
+  case determinate
   /** Progress is shown using a horizontal progress bar */
-  case DeterminateHorizontalBar
+  case determinateHorizontalBar
   /** Progress is shown using a ring-shaped progress view. */
-  case AnnularDeterminate
+  case annularDeterminate
   /** Shows a custom view */
-  case CustomView
+  case customView
   /** Shows only labels */
-  case Text
+  case text
   /** Shows a Checkmark Image */
-  case Checkmark
+  case checkmark
 }
 
 public extension BXProgressHUDMode{
   public var isOnlyText:Bool{
-    return self == Text
+    return self == BXProgressHUDMode.text
   }
   
   public var isHorizontalBar:Bool{
-    return self == .DeterminateHorizontalBar
+    return self == .determinateHorizontalBar
   }
   
   public var isCustomView:Bool{
-    return self == .CustomView
+    return self == .customView
   }
 }
 
