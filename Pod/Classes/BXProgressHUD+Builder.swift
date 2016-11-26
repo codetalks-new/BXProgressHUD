@@ -10,7 +10,7 @@ import Foundation
 
 public extension BXProgressHUD{
     
-    open class Builder {
+    public class Builder {
         let hud:BXProgressHUD
         let targetView:UIView
         public init(forView:UIView){
