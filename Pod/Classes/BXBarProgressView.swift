@@ -99,8 +99,8 @@ open class BXBarProgressView: BXBaseProgressView{
             let startY = radius + radius * cos(offsetAngle)
             let startPoint  = CGPoint(x: amount + lineWidth * 0.5, y: startY)
             
-            let startAngle = CGFloat(M_PI_2) + offsetAngle
-            let endAngle =  2 * CGFloat(M_PI) - startAngle
+            let startAngle = CGFloat.pi / 2 + offsetAngle
+            let endAngle =  2 * CGFloat.pi - startAngle
             
             let path = UIBezierPath()
             path.move(to: startPoint)
@@ -117,8 +117,8 @@ open class BXBarProgressView: BXBaseProgressView{
             progressPath.fill()
             let arcStartX = roundedRect.maxX - radius
             let offsetAngle = asin((amount - arcStartX) / radius)
-            let startAngle = CGFloat(M_PI_2) - offsetAngle
-            let endAngle = 2 * CGFloat(M_PI) - startAngle
+            let startAngle = CGFloat.pi / 2 - offsetAngle
+            let endAngle = 2 * CGFloat.pi - startAngle
             let startY =  radius + radius * cos(offsetAngle)
             let reminderPath = UIBezierPath()
             let startPoint = CGPoint(x: amount, y: startY)
@@ -130,7 +130,7 @@ open class BXBarProgressView: BXBaseProgressView{
             
             let rightArcPath = UIBezierPath()
             rightArcPath.move(to: CGPoint(x: arcStartX, y: roundedRect.maxY))
-            rightArcPath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(M_PI_2), endAngle: CGFloat( M_PI * 2 - M_PI_2), clockwise: false)
+            rightArcPath.addArc(withCenter: center, radius: radius, startAngle: CGFloat.pi / 2, endAngle: ( CGFloat.pi * 2 - CGFloat.pi / 2), clockwise: false)
             rightArcPath.close()
             rightArcPath.append(reminderPath)
             rightArcPath.usesEvenOddFillRule = true

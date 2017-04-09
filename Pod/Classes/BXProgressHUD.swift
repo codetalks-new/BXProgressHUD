@@ -452,7 +452,13 @@ extension BXProgressHUD{
   
   func updateForCurrentOrientationAnimated(_ animated:Bool = true){
     if let superview = self.superview{
-      bounds = superview.bounds
+      if animated{
+       UIView.animate(withDuration: 0.25){
+          self.bounds = superview.bounds
+       }
+      }else{
+        bounds = superview.bounds
+      }
     }
   }
 }

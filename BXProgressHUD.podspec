@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "BXProgressHUD"
-  s.version          = "2.0"
-  s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 3.0 with some new feature"
+  s.version          = "2.1"
+  s.summary          = "BXProgressHUD A ProgressHUD based on MBProgressHUD writtern with Swift 3.1 with some new feature"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-                BXProgressHUD A ProgressHUD based on MBProgressHUD,
-                As this is rewritten with Swift 2.1,It should be used more naturely in Swift Code,
+                BXHUD A ProgressHUD based on MBProgressHUD,
+                As this is rewritten with Swift 3.1,It should be used more naturely in Swift Code,
                 And It's add some Builder Pattern Support.
                        DESC
 

@@ -63,7 +63,7 @@ open class BXRoundProgressView : BXBaseProgressView{
         let circleRect = allRect.insetBy(dx: lineWidth , dy: lineWidth)
         
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        let startAngle =  CGFloat( M_PI_2 ) // 90 degrees
+        let startAngle =  CGFloat.pi / 2 // CGFloat( M_PI_2 ) // 90 degrees
         
         
         if annular{
@@ -73,7 +73,7 @@ open class BXRoundProgressView : BXBaseProgressView{
             processBackgroundPath.lineCapStyle = .butt
             
             let radius = (bounds.width - lineWidth) * 0.5
-            let endAngle = CGFloat( M_PI  * 2 ) + startAngle
+            let endAngle = (CGFloat.pi  * 2 ) + startAngle
             processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             backgroundTintColor.set()
             processBackgroundPath.stroke()
@@ -82,7 +82,7 @@ open class BXRoundProgressView : BXBaseProgressView{
             let processPath = UIBezierPath()
             processPath.lineWidth = lineWidth
             processPath.lineCapStyle = .square
-            let endAngle2 = self.progress * 2 * CGFloat(M_PI) + startAngle
+            let endAngle2 = self.progress * 2 * CGFloat.pi + startAngle
             processPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
             progressColor.set()
             processPath.stroke()
@@ -100,7 +100,7 @@ open class BXRoundProgressView : BXBaseProgressView{
             // Draw progress
             progressColor.setFill()
             let radius = (bounds.width - lineWidth - 2) * 0.5
-            let endAngle2 = self.progress * 2 * CGFloat(M_PI) + startAngle
+            let endAngle2 = self.progress * 2 * CGFloat.pi + startAngle
             let path = UIBezierPath()
             path.move(to: center)
             path.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle2, clockwise: true)
